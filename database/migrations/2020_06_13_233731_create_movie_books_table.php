@@ -16,9 +16,9 @@ class CreateMovieBooksTable extends Migration
         Schema::create('movie_books', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('userId')->unsigned();
-            $table->foreign('userId')->references('userId')->on('users');
+            $table->foreign('userId')->references('id')->on('users');
             $table->bigInteger('movieId')->unsigned();
-            $table->foreign('movieId')->references('movieId')->on('movies');
+            $table->foreign('movieId')->references('id')->on('movies');
             $table->date('bookDate');
             $table->timestamps();
         });

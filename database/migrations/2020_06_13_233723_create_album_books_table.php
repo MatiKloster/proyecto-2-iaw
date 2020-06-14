@@ -16,9 +16,9 @@ class CreateAlbumBooksTable extends Migration
         Schema::create('album_books', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('userId')->unsigned();
-            $table->foreign('userId')->references('userId')->on('users');
+            $table->foreign('userId')->references('id')->on('users');
             $table->bigInteger('albumId')->unsigned();
-            $table->foreign('albumId')->references('albumId')->on('albums');
+            $table->foreign('albumId')->references('id')->on('albums');
             $table->date('bookDate');
             $table->timestamps();
         });

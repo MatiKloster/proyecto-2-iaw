@@ -14,11 +14,11 @@ class CreateAlbumsTable extends Migration
     public function up()
     {
         Schema::create('albums', function (Blueprint $table) {
-            $table->bigIncrements('albumId');
+            $table->id();
             $table->string('name');
             $table->string('artist');
             $table->mediumText('cover');
-            $table->date('year');
+            $table->integer('year');
             $table->string('genre');
             $table->integer('quantity');
             $table->decimal('price',8,2);
