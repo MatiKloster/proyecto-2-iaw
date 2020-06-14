@@ -28,7 +28,7 @@
                     </div>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Discos</a>
+                    <a class="nav-link" href="/Album">Discos</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Peliculas</a>
@@ -46,7 +46,9 @@
         </div>
     </nav>
     <main class="py-4">
-        @yield('content')
+        <div class="col-md-8 offset-md-2">
+            @yield('content')
+        </div>
     </main>
 </body>
 
