@@ -6,7 +6,7 @@
         <form action="" method="POST">
             <div class="form-group">
                 <label for="formGroupExampleInput">Nombre</label>
-                <input type="text" class="form-control" id="formGro upExampleInput" placeholder="eg Master of Puppets">
+                <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="e.g Master of Puppets">
             </div>
             <div class="form-group">
                 <label for="formGroupExampleInput2">Banda</label>
@@ -23,6 +23,14 @@
             <div class="form-group">
                 <label for="formGroupExampleInput2">Cantidad reservable</label>
                 <input type="number" class="form-control" id="formGroupExampleInput2" placeholder="e.g 5">
+            </div>
+            <div class="form-group">
+                <label for="formGroupExampleInput2">Cantidad reservable</label>
+                <input type="number" min ="0" class="form-control" id="formGroupExampleInput2" placeholder="e.g 5">
+            </div>
+            <div class="form-group">
+                <label for="formGroupExampleInput2">Precio</label>
+                <input type="number" min="0.01" step="0.01" />
             </div>
             <div class="form-group">
                 <label for="exampleFormControlFile1">Eliga una imagen para la tapa</label>
