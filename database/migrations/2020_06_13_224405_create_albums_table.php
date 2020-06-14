@@ -20,9 +20,6 @@ class CreateAlbumsTable extends Migration
             $table->mediumText('cover');
             $table->date('year');
             $table->string('genre');
-            $table->time('duration')->nullable();
-            $table->text('description')->nullable();
-            $table->integer('songs')->nullable();
             $table->integer('quantity');
             $table->decimal('price',8,2);
             $table->timestamps();

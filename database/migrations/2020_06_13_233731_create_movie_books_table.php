@@ -19,6 +19,7 @@ class CreateMovieBooksTable extends Migration
             $table->foreign('userId')->references('userId')->on('users');
             $table->bigInteger('movieId')->unsigned();
             $table->foreign('movieId')->references('movieId')->on('movies');
+            $table->date('bookDate');
             $table->timestamps();
         });
     }
