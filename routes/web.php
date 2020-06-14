@@ -16,3 +16,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('index');
 });
+Route::get('/Album','AlbumController@index')->name('albumIndex');
+Route::get('/Album/create','AlbumController@create')->name('albumCreation');
+Route::post('/Album/store','AlbumController@store')->name('albumStore');
+Route::get('/Movie','MovieController@index')->name('movieIndex');
+Route::get('/Movie/create','MovieController@create')->name('movieCreation');
