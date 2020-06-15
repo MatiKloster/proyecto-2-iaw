@@ -21,3 +21,4 @@ Route::get('/Album/create','AlbumController@create')->name('albumCreation');
 Route::post('/Album/store','AlbumController@store')->name('albumStore');
 Route::get('/Movie','MovieController@index')->name('movieIndex');
 Route::get('/Movie/create','MovieController@create')->name('movieCreation');
+Route::post('/Movie/store','MovieController@store')->name('movieStore');

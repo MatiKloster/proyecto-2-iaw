@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Album;
+use App\Http\Requests\StoreAlbum;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
 
@@ -35,27 +36,25 @@ class AlbumController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreAlbum $request)
     {
+        $validate=$request->validated();
+        
         $album = new Album();
-        $album->name = $request->input('name');
-        $album->artist = $request->input('artist');
-        $album->year = $request->input('year');
-        $album->genre = $request->input('genre');
-        $album->quantity = $request->input('quantity');
-        $album->price = $request->input('price');
+        $album->name = $validate['name'];
+        $album->artist = $validate['artist'];
+        $album->year = $validate['year'];
+        $album->genre = $validate['genre'];
+        $album->quantity = $validate['quantity'];
+        $album->price = $validate['price'];
 
-        if ($request->hasFile('image')) {
-            $file = $request->file('image');
-            $extension = $file->getClientOriginalExtension();
-            $filename = $album->name . '.' . $extension; // files are gonna be named '<albumname>.<extension>' typically .jpg .png
-            $file->move('uploads/albums/', $filename);
-
-            $album->cover = $filename;
-        }
-        else{
-            return $request->all();
-        }
+        
+        $file = $validate['image'];
+        $extension = $file->getClientOriginalExtension();
+        $filename = $album->name . '.' . $extension; // files are gonna be named '<albumname>.<extension>' typically .jpg .png
+        $file->move('uploads/albums/', $filename);
+        
+        $album->cover = $filename;
         $album->save();
 
         return view('album.index');
@@ -85,11 +84,11 @@ class AlbumController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request  $validate
      * @param  \App\Album  $album
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Album $album)
+    public function update(Request $validate, Album $album)
     {
         //
     }

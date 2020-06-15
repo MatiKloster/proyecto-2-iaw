@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Movie;
 use Illuminate\Http\Request;
-
+use App\Http\Requests\StoreMovie;
 class MovieController extends Controller
 {
     /**
@@ -14,7 +14,8 @@ class MovieController extends Controller
      */
     public function index()
     {
-        //
+        $movies = Movie::all();
+        return view('movie.index', compact('movies'));
     }
 
     /**
@@ -24,7 +25,8 @@ class MovieController extends Controller
      */
     public function create()
     {
-        //
+        $movie=true;
+        return view('album.create', compact('movie'));
     }
 
     /**
@@ -33,9 +35,28 @@ class MovieController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreMovie $request)
     {
-        //
+        $validate=$request->validated();
+        
+        $movie = new Movie();
+        $movie->name = $validate['name'];
+        $movie->director = $validate['director'];
+        $movie->year = $validate['year'];
+        $movie->genre = $validate['genre'];
+        $movie->quantity = $validate['quantity'];
+        $movie->price = $validate['price'];
+
+        
+        $file = $validate['image'];
+        $extension = $file->getClientOriginalExtension();
+        $filename = $movie->name . '.' . $extension; // files are gonna be named '<albumname>.<extension>' typically .jpg .png
+        $file->move('uploads/movies/', $filename);
+        
+        $movie->cover = $filename;
+        $movie->save();
+
+        return view('movie.index');
     }
 
     /**
