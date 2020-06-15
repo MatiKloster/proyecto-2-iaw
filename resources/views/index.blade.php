@@ -1,11 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    
     <title>{{ config('app.name', 'Retromundo') }}</title>
 </head>
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
@@ -31,17 +32,14 @@
                     <a class="nav-link" href="/Album">Discos</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Peliculas</a>
+                    <a class="nav-link" href="/Movie">Peliculas</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Novedades</a>
                 </li>
             </ul>
             <form class="form-inline my-2 my-lg-0">
-                <a class="navbar-brand" href="#">Retromundo!</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+                <a class="logo navbar-brand" href="/" >Retromundo!</a>
             </form>
         </div>
     </nav>
