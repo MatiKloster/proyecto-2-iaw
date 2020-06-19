@@ -28,12 +28,7 @@
                         <a class="dropdown-item" href="#">Log as Administrator</a>
                     </div>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/Album">Discos</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/Movie">Peliculas</a>
-                </li>
+                
                 <li class="nav-item">
                     <a class="nav-link" href="#">Novedades</a>
                 </li>
