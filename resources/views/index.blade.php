@@ -39,7 +39,7 @@
                 </li>
             </ul>
             <form class="form-inline my-2 my-lg-0">
-                <a class="logo navbar-brand" href="/" >Retromundo!</a>
+                <a class="logo navbar-brand" href="/" style="color: rgb(255,80,0);" >Retromundo!</a>
             </form>
         </div>
     </nav>
@@ -49,6 +49,5 @@
         </div>
     </main>
 </body>
-
-
+@yield('scripts')
 </html>
