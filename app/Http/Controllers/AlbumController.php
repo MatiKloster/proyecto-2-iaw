@@ -9,10 +9,6 @@ use Illuminate\Support\Facades\App;
 
 class AlbumController extends Controller
 {   
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
     /**
      * Display a listing of the resource.
      *
@@ -70,9 +66,10 @@ class AlbumController extends Controller
      * @param  \App\Album  $album
      * @return \Illuminate\Http\Response
      */
-    public function show(Album $album)
+    public function show($id)
     {
-        
+        $album=Album::findOrFail($id);
+        return view('album.album',compact('album'));
     }
 
     /**
@@ -124,8 +121,11 @@ class AlbumController extends Controller
      * @param  \App\Album  $album
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Album $album)
+    public function delete($id)
     {
-        //
+        $album=Album::findOrFail($id);
+        $album->delete();
+
+        return redirect()->route('albumIndex')->with('message','El album fue elminado con exito!');
     }
 }

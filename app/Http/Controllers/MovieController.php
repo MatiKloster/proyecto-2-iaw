@@ -7,10 +7,6 @@ use Illuminate\Http\Request;
 use App\Http\Requests\StoreMovie;
 class MovieController extends Controller
 {   
-    public function __construct()
-{
-    $this->middleware('auth');
-}
     /**
      * Display a listing of the resource.
      *
@@ -70,9 +66,10 @@ class MovieController extends Controller
      * @param  \App\Movie  $movie
      * @return \Illuminate\Http\Response
      */
-    public function show(Movie $movie)
+    public function show($id)
     {
-        //
+        $movie=Movie::findOrFail($id);
+        return view('movie.movie',compact('movie'));
     }
 
     /**
@@ -124,8 +121,11 @@ class MovieController extends Controller
      * @param  \App\Movie  $movie
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Movie $movie)
+    public function delete($id)
     {
-        //
+        $movie=Movie::findOrFail($id);
+        $movie->delete();
+
+        return redirect()->route('movieIndex')->with('message','La pelicula fue elminado con exito!');
     }
 }
