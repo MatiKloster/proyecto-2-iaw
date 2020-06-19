@@ -26,7 +26,6 @@
                             <div class="row">
                                 <button type="button" class="btn btn-success" style="background-color: #ff5100; border-color:#ff5100;"> $ {{$movie->price}} </button>
                                 <a href="#" class="card-link col-mb-4 offset-2">Reservar</a>
-                                <a href="{{route('movieEdit',$movie)}}" class="card-link col-mb-4 offset-2">Editar</a>
                             </div>
 
                         </div>

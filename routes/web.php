@@ -25,6 +25,7 @@ Route::put('/Album/edit/{id}','AlbumController@update')->name('albumUpdate');
 Route::delete('/Album/delete/{id}','AlbumController@delete')->name('albumDelete');
 
 Route::get('/Movie','MovieController@index')->name('movieIndex');
+Route::get('/Movie/{id}','MovieController@show')->name('movieShow');
 Route::get('/Movie/create','MovieController@create')->name('movieCreation');
 Route::post('/Movie/store','MovieController@store')->name('movieStore');
 Route::get('/Movie/edit/{id}','MovieController@edit')->name('movieEdit');
