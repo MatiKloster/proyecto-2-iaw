@@ -25,7 +25,7 @@ class StoreAlbum extends FormRequest
     {
         return [
             'name'=>'required|alpha|max:50',
-            'artist'=>'required|alpha-num|max:50',
+            'artist'=>"required|regex:/^[a-z ,'.-]+$/i|max:50",
             'year'=>'required|numeric|max:'.date('Y').'',
             'genre'=>'required|alpha|max:50',
             'quantity'=>'numeric|required',

@@ -17,7 +17,7 @@ class AlbumController extends Controller
     public function index()
     {
         $albums = Album::all();
-        return view('album.index', compact('albums'));
+        return view('album.index',compact('albums'));
     }
 
     /**
@@ -57,7 +57,7 @@ class AlbumController extends Controller
         $album->cover = $filename;
         $album->save();
 
-        return view('album.index');
+        return redirect()->route('albumIndex')->with('message','El album fue almcenado con exito!');
     }
 
     /**
@@ -68,6 +68,7 @@ class AlbumController extends Controller
      */
     public function show(Album $album)
     {
+        
     }
 
     /**
@@ -76,9 +77,10 @@ class AlbumController extends Controller
      * @param  \App\Album  $album
      * @return \Illuminate\Http\Response
      */
-    public function edit(Album $album)
+    public function edit($id)
     {
-        //
+        $album=Album::findOrFail($id);
+        return view('album.edit',compact('album'));
     }
 
     /**
@@ -88,9 +90,28 @@ class AlbumController extends Controller
      * @param  \App\Album  $album
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $validate, Album $album)
+    public function update(StoreAlbum $request,$id)
     {
-        //
+        //the inputs gets validated
+        $validate=$request->validated();
+
+        $album=Album::findOrFail($id);
+        $album->name = $validate['name'];
+        $album->artist = $validate['artist'];
+        $album->year = $validate['year'];
+        $album->genre = $validate['genre'];
+        $album->quantity = $validate['quantity'];
+        $album->price = $validate['price'];
+
+        $file = $validate['image'];
+        $extension = $file->getClientOriginalExtension();
+        $filename = $album->name . '.' . $extension; // files are gonna be named '<albumname>.<extension>' typically .jpg .png
+        $file->move('uploads/albums/', $filename);
+
+        $album->cover = $filename;
+        $album->save();
+
+        return redirect()->route('albumIndex')->with('message','El album fue editado con exito!');
     }
 
     /**

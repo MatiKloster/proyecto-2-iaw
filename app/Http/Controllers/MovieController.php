@@ -15,7 +15,8 @@ class MovieController extends Controller
     public function index()
     {
         $movies = Movie::all();
-        return view('movie.index', compact('movies'));
+        session(['director' => 'director']);
+        return view('movie.index',compact('movies'));
     }
 
     /**
@@ -56,7 +57,7 @@ class MovieController extends Controller
         $movie->cover = $filename;
         $movie->save();
 
-        return view('movie.index');
+        return redirect()->route(' movieIndex')->with('message','La pelicula fue almacenada con exito!');
     }
 
     /**
@@ -76,9 +77,10 @@ class MovieController extends Controller
      * @param  \App\Movie  $movie
      * @return \Illuminate\Http\Response
      */
-    public function edit(Movie $movie)
+    public function edit($id)
     {
-        //
+        $movie=Movie::findOrFail($id);
+        return view('movie.edit',compact('movie'));
     }
 
     /**
@@ -88,9 +90,28 @@ class MovieController extends Controller
      * @param  \App\Movie  $movie
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Movie $movie)
+    public function update(StoreMovie $request, $id)
     {
-        //
+         //the inputs gets validated
+         $validate=$request->validated();
+
+         $movie=Movie::findOrFail($id);
+         $movie->name = $validate['name'];
+         $movie->director = $validate['director'];
+         $movie->year = $validate['year'];
+         $movie->genre = $validate['genre'];
+         $movie->quantity = $validate['quantity'];
+         $movie->price = $validate['price'];
+ 
+         $file = $validate['image'];
+         $extension = $file->getClientOriginalExtension();
+         $filename = $movie->name . '.' . $extension; // files are gonna be named '<albumname>.<extension>' typically .jpg .png
+         $file->move('uploads/albums/', $filename);
+ 
+         $movie->cover = $filename;
+         $movie->save();
+ 
+         return redirect()->route('movieIndex')->with('message','La pelicula fue editada con exito!');
     }
 
     /**

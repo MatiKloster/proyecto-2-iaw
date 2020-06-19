@@ -19,6 +19,11 @@ Route::get('/', function () {
 Route::get('/Album','AlbumController@index')->name('albumIndex');
 Route::get('/Album/create','AlbumController@create')->name('albumCreation');
 Route::post('/Album/store','AlbumController@store')->name('albumStore');
+Route::get('/Album/edit/{id}','AlbumController@edit')->name('albumEdit');
+Route::put('/Album/edit/{id}','AlbumController@update')->name('albumUpdate');
+
 Route::get('/Movie','MovieController@index')->name('movieIndex');
 Route::get('/Movie/create','MovieController@create')->name('movieCreation');
 Route::post('/Movie/store','MovieController@store')->name('movieStore');
+Route::get('/Movie/edit/{id}','MovieController@edit')->name('movieEdit');
+Route::put('/Movie/edit/{id}','MovieController@update')->name('movieUpdate');
