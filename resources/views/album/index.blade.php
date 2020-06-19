@@ -11,7 +11,7 @@
             <div class="card-deck">
                 @foreach ($albums as $album)
                 <div class="col-4-lg">
-                    <div class="card mb-4" style="min-width: 18rem; max-width: 18rem;">
+                    <div class="card mb-4" style="min-width: 18rem; max-width: 18rem;" >
                         <img src="{{ URL::asset('uploads/productos/'.$album->cover) }}" class="card-img-top" alt="...">
                         <div class="card-body">
                             <h4 class="card-title">{{$album->name}}</h4>
@@ -28,8 +28,8 @@
                                 <button type="button" class="btn btn-success" style="background-color: #ff5100; border-color:#ff5100;"> $ {{$album->price}} </button>
                                 <a href="#" class="card-link col-mb-4 offset-2">Reservar</a>
                             </div>
-
                         </div>
+                        <a href="{{route('albumShow',$album)}}" class="stretched-link"></a>
                     </div>
                 </div>
                 @endforeach

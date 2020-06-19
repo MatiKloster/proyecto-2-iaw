@@ -29,6 +29,7 @@
                             </div>
 
                         </div>
+                        <a href="{{route('movieShow',$movie)}}" class="stretched-link"></a>
                     </div>
                 </div>
                 @endforeach
