@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
+Route::get('/home', function () {
     return view('index');
 });
 Route::get('/Album','AlbumController@index')->name('albumIndex');
@@ -27,3 +27,7 @@ Route::get('/Movie/create','MovieController@create')->name('movieCreation');
 Route::post('/Movie/store','MovieController@store')->name('movieStore');
 Route::get('/Movie/edit/{id}','MovieController@edit')->name('movieEdit');
 Route::put('/Movie/edit/{id}','MovieController@update')->name('movieUpdate');
+
+Auth::routes();
+
+Route::get('/', 'HomeController@index')->name('home');
