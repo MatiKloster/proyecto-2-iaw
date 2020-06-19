@@ -19,4 +19,10 @@
   -webkit-box-shadow: -1px 9px 40px -12px rgba(0, 0, 0, 0.75);
   box-shadow: -1px 9px 40px -12px rgba(0, 0, 0, 0.75);
 }
+
+.btn.btn-lg {
+  background-color: #ff5000;
+  border-color: #ff5000;
+  color: black;
+}
 /*# sourceMappingURL=app.css.map */

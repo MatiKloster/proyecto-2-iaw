@@ -87,8 +87,11 @@
         </nav>
 
         <main class="py-4">
-            @yield('content')
+            <div class="col-md-8 offset-md-2">
+                @yield('content')
+            </div>
         </main>
     </div>
 </body>
+@yield('scripts')
 </html>

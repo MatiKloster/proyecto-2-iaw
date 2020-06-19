@@ -1,4 +1,6 @@
 //\
+$colorLogo:rgb(255,80,0);
+
 @import url(//fonts.googleapis.com/css?family=Carter+One);
 .dropdown-toggle::after { 
     content: none; 
@@ -8,17 +10,9 @@
     height: 15vw;
     object-fit: cover;
 }
-@font-face {
-    font-family: 'remachineScript';
-    src:url('RemachineScript.ttf') format('ttf'), 
-        url('remachinescript-webfont.woff2') format('woff2'),
-         url('remachinescript-webfont.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
 
-}
 .logo{
-    color: rgb(255,80,0);
+    color: $colorLogo;
     font-family: 'Carter One';
 }
 .card:hover{
@@ -26,3 +20,10 @@
     -moz-box-shadow: -1px 9px 40px -12px rgba(0,0,0,0.75);
     box-shadow: -1px 9px 40px -12px rgba(0, 0, 0, 0.75);
 }
+
+.btn.btn-lg{
+    background-color:$colorLogo;
+    border-color: $colorLogo;
+    color: black;
+}
+
