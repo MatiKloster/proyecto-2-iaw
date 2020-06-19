@@ -10,13 +10,6 @@
      object-fit: cover;
 }
 
-@font-face {
-  font-family: 'remachineScript';
-  src: url("RemachineScript.ttf") format("ttf"), url("remachinescript-webfont.woff2") format("woff2"), url("remachinescript-webfont.woff") format("woff");
-  font-weight: normal;
-  font-style: normal;
-}
-
 .logo {
   color: #ff5000;
   font-family: 'Carter One';

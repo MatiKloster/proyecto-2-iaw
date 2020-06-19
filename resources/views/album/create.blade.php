@@ -1,4 +1,4 @@
-@extends('index')
+@extends('layouts.app')
 @section('content')
 <div class="jumbotron">
         <h5 class=" row justify-content-center"> CREAR ALBUM</h5>
