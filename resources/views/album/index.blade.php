@@ -2,9 +2,10 @@
 @section('content')
 @if(session('message'))
             <div class="alert alert-success">
-                <strong>Yey!</strong>{{session('message')}}<br><br>
+                <strong>Yey! </strong>{{session('message')}}<br><br>
             </div>
         @endif
+{{$albums->links()}}
 <div class="container mt-5">
     <div class="row">
         <div class="card-wrapper">
@@ -24,9 +25,11 @@
                         </div>
                         
                         <div class="card-body">
-                            <div class="row">
-                                <button type="button" class="btn btn-success" style="background-color: #ff5100; border-color:#ff5100;"> $ {{$album->price}} </button>
-                                <a href="#" class="card-link col-mb-4 offset-2">Reservar</a>
+                            <div class="row justify-content-center">
+                                <button type="button" class="btn btn-success" style="background-color: #ff5100; border-color:#ff5100; disabled:true;"> $ {{$album->price}} </button>
+                            </div>
+                            <div class="row justify-content-center">
+                                <p class="card-text"><small class="text-muted">Clickeá en donde se te ocurra para mas info.</small></p>
                             </div>
                         </div>
                         <a href="{{route('albumShow',$album)}}" class="stretched-link"></a>
@@ -35,8 +38,9 @@
                 @endforeach
             </div>
         </div>
-        @endsection
-        @section('scripts')
-        <script src="js/app.js"></script>
-
-        @endsection
+    </div>
+</div>
+@endsection
+@section('scripts')
+<script src="js/app.js"></script>
+@endsection

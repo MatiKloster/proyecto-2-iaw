@@ -23,11 +23,12 @@
                             <li class="list-group-item">Disponibles: {{$movie->quantity}}</li>
                         </ul>
                         <div class="card-body">
-                            <div class="row">
-                                <button type="button" class="btn btn-success" style="background-color: #ff5100; border-color:#ff5100;"> $ {{$movie->price}} </button>
-                                <a href="#" class="card-link col-mb-4 offset-2">Reservar</a>
+                            <div class="row justify-content-center">
+                                <button type="button" class="btn btn-success" style="background-color: #ff5100; border-color:#ff5100; disabled:true;"> $ {{$movie->price}} </button>
                             </div>
-
+                            <div class="row justify-content-center">
+                                <p class="card-text"><small class="text-muted">Clickeá en donde se te ocurra para mas info.</small></p>
+                            </div>
                         </div>
                         <a href="{{route('movieShow',$movie)}}" class="stretched-link"></a>
                     </div>

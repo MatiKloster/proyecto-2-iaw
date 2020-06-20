@@ -28,7 +28,7 @@
                 <input type="text" name="artist" class="form-control" placeholder="e.g Coldplay">
             </div>
             <div class="form-group">
-                <label for="formGroupExampleInput2">Año</label>
+                <label >Año</label>
                 <input type="number" min=0 name="year" class="form-control" placeholder="e.g 1981">
             </div>
             <div class="form-group">
