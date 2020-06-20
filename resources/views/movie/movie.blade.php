@@ -17,18 +17,23 @@
                         </div>
                     </div>
                 </div>
-                
+                <p class="card-text"><small class="text-muted">Clickeá 
+                    <a href="http://www.google.com/search?q={{$movie->name}}+movie" target="_blank">aqui</a>
+                         para mas información acerca de la pelicula.</small></p>
             </div>
             <div class="col-3">
-                <div class="row justify-content-center mt-5">
+                <div class="row justify-content-center mt-2">
                     <form action="{{route('movieDelete',$movie)}}" method="POST">
                         @method('DELETE')
                         @csrf
-                        <button type="submit" class="btn  btn-lg"  onclick="return confirm('Estas segura/o?')">Eliminar</button>
+                        <button type="submit" class="btn btn-lg"  onclick="return confirm('Estas segura/o?')">Eliminar</button>
                     </form>
                 </div>
-                <div class="row justify-content-center mt-5">
+                <div class="row justify-content-center mt-3">
                     <button type="button" class="btn btn-lg" {{route('movieEdit',$movie)}}>Editar</button>
+                </div>
+                <div class="row justify-content-center mt-4">
+                    <button type="button" class="btn btn-lg" {{route('albumEdit',$album)}}>Reservar</button>
                 </div>
             </div>  
         </div>
