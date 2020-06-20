@@ -14,8 +14,7 @@ class MovieController extends Controller
      */
     public function index()
     {
-        $movies = Movie::all();
-        session(['director' => 'director']);
+        $movies = Movie::paginate(9);
         return view('movie.index',compact('movies'));
     }
 

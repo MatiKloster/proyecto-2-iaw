@@ -25,4 +25,26 @@
   border-color: #ff5000;
   color: black;
 }
+
+.pagination > li > a,
+.pagination > li > span {
+  color: #ff5000;
+}
+
+.pagination > .active > a,
+.pagination > .active > a:focus,
+.pagination > .active > a:hover,
+.pagination > .active > span,
+.pagination > .active > span:focus,
+.pagination > .active > span:hover {
+  background-color: #343a40;
+  border-color: #343a40;
+}
+
+.page-item.active .page-link {
+  z-index: 3;
+  color: #ff5000 !important;
+  background-color: #343a40 !important;
+  border-color: #343a40 !important;
+}
 /*# sourceMappingURL=app.css.map */
