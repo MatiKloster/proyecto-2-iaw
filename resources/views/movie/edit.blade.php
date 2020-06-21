@@ -21,7 +21,7 @@
         @method('PUT')
         @csrf
         @include('movie.form')
-        <button type="submit" name="submit" class="btn btn-dark">Guardar</button>
+        <button type="submit" name="submit" class="btn btn-dark textButton">Guardar</button>
     </form>
 </div>
 @endsection

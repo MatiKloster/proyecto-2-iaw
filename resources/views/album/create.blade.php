@@ -20,7 +20,7 @@
         <form action="{{  route('albumStore') }}" method="POST" enctype="multipart/form-data">
             @csrf
             @include('album.form')
-            <button type="submit" name="submit" class="btn btn-dark">Crear</button>
+            <button type="submit" name="submit" class="btn btn-dark textButton">Crear</button>
         </form>
 </div>
 @endsection

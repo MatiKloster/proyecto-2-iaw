@@ -26,14 +26,14 @@
                     <form action="{{route('movieDelete',$movie)}}" method="POST">
                         @method('DELETE')
                         @csrf
-                        <button type="submit" class="btn btn-lg"  onclick="return confirm('Estas segura/o?')">Eliminar</button>
+                        <button type="submit" class="btn btn-lg textButton"  onclick="return confirm('Estas segura/o?')">Eliminar</button>
                     </form>
                 </div>
                 <div class="row justify-content-center mt-3">
-                    <a type="button" class="btn btn-lg" href="{{route('movieEdit',$movie)}}">Editar</a>
+                    <a type="button" class="btn btn-lg textButton" href="{{route('movieEdit',$movie)}}">Editar</a>
                 </div>
                 <div class="row justify-content-center mt-4">
-                    <button type="button" class="btn btn-lg" {{route('movieEdit',$movie)}}>Reservar</button>
+                    <button type="button" class="btn btn-lg textButton" {{route('movieEdit',$movie)}}>Reservar</button>
                 </div>
             </div>  
         </div>
