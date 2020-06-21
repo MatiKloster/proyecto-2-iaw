@@ -30,7 +30,7 @@ class StoreAlbum extends FormRequest
             'genre'=>'required|max:50',
             'quantity'=>'numeric|required',
             'price'=>'numeric|required',
-            'image'=>'required|file|image',
+            'image'=>'required|file|image|max:5000',
             //
         ];
     }

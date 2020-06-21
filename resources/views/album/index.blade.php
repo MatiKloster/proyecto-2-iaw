@@ -13,7 +13,7 @@
                 @foreach ($albums as $album)
                 <div class="col-4-lg">
                     <div class="card mb-4" style="min-width: 18rem; max-width: 18rem;" >
-                        <img src="{{ URL::asset('uploads/productos/'.$album->cover) }}" class="card-img-top" alt="...">
+                        <img src="{{ asset('storage/'.$album->cover) }}" class="card-img-top" alt="...">
                         <div class="card-body">
                             <h4 class="card-title">{{$album->name}}</h4>
                             <p class="font-weight-bold blue-text">{{$album->artist}}</p>

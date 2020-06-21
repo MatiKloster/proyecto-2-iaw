@@ -30,7 +30,7 @@ class StoreMovie extends FormRequest
             'genre'=>'required|alpha|max:50',
             'quantity'=>'numeric|required',
             'price'=>'numeric|required',
-            'image'=>'image|required',
+            'image'=>'required|file|image|max:5000',
         ];
     }
 

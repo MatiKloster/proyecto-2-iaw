@@ -3,7 +3,7 @@
     <div class="jumbotron">
         <div class="row">
             <div class="col-3">
-              One of three columns
+                <img src="{{asset('storage/'.$movie->cover)}}" class="img-fluid" alt="No se ha encontrado la imagen">
             </div>
             <div class="col-6">
                 <div class="card" style="max-width: 540px;">
@@ -33,7 +33,7 @@
                     <a type="button" class="btn btn-lg" href="{{route('movieEdit',$movie)}}">Editar</a>
                 </div>
                 <div class="row justify-content-center mt-4">
-                    <button type="button" class="btn btn-lg" {{route('albumEdit',$album)}}>Reservar</button>
+                    <button type="button" class="btn btn-lg" {{route('movieEdit',$movie)}}>Reservar</button>
                 </div>
             </div>  
         </div>
