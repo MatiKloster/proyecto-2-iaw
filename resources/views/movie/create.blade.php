@@ -19,36 +19,7 @@
             </div>
             @endif
             @csrf
-            <div class="form-group">
-                <label>Nombre</label>
-                <input type="text" name="name" class="form-control" placeholder="e.g Titanic">
-            </div>
-            <div class="form-group">
-                <label>Director</label>
-                <input type="text" name="artist" class="form-control" placeholder="e.g James Cameron">
-            </div>
-            <div class="form-group">
-                <label>Año</label>
-                <input type="number" min=0 name="year" class="form-control" placeholder="e.g 1997">
-            </div>
-            <div class="form-group">
-                <label>Genero</label>
-                <input type="text" name="genre" class="form-control" placeholder="e.g Clasico">
-            </div>
-            <div class="form-group">
-                <label>Cantidad reservable</label>
-                <input type="number" min=0 name="quantity" class="form-control" placeholder="e.g 5">
-            </div>
-            <div class="form-group">
-                <label>Precio</label>
-                <input type="number" name="price" min="0.01" step="0.01" />
-            </div>
-            <div class="form-group">
-                <div class="custom-file">
-                    <label>Eliga una imagen para la tapa de la pelicula</label>
-                    <input type="file" name="image" class="form-control-file">
-                </div>
-            </div>
+            @include('movie.form')
             <button type="submit" name="submit" class="btn btn-dark">Crear</button>
         </form>
 </div>

@@ -17,16 +17,17 @@ Route::get('/home', function () {
     return view('index');
 });
 Route::get('/Album','AlbumController@index')->name('albumIndex');
-Route::get('/Album/{id}','AlbumController@show')->name('albumShow');
 Route::get('/Album/create','AlbumController@create')->name('albumCreation');
+Route::get('/Album/{id}','AlbumController@show')->name('albumShow');
 Route::post('/Album/store','AlbumController@store')->name('albumStore');
 Route::get('/Album/edit/{id}','AlbumController@edit')->name('albumEdit');
 Route::put('/Album/edit/{id}','AlbumController@update')->name('albumUpdate');
 Route::delete('/Album/delete/{id}','AlbumController@delete')->name('albumDelete');
 
 Route::get('/Movie','MovieController@index')->name('movieIndex');
-Route::get('/Movie/{id}','MovieController@show')->name('movieShow');
 Route::get('/Movie/create','MovieController@create')->name('movieCreation');
+Route::get('/Movie/{id}','MovieController@show')->name('movieShow');
+
 Route::post('/Movie/store','MovieController@store')->name('movieStore');
 Route::get('/Movie/edit/{id}','MovieController@edit')->name('movieEdit');
 Route::put('/Movie/edit/{id}','MovieController@update')->name('movieUpdate');
