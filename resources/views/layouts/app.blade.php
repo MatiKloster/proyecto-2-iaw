@@ -67,7 +67,6 @@
                                     <a class="dropdown-item" href="#">Mis Reservas</a>
                                     <a class="dropdown-item" href="#">Cambiar contraseña</a>
                                     <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="#">Log as Administrator</a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
