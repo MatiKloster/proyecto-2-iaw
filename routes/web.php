@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Auth;
 */
 
 Route::get('/home', function () {
-    return view('index');
+    return redirect()->route('home');
 });
 Route::get('/Album','AlbumController@index')->name('albumIndex');
 Route::get('/Album/create','AlbumController@create')->name('albumCreation');
@@ -29,7 +29,6 @@ Route::delete('/Album/delete/{id}','AlbumController@delete')->name('albumDelete'
 Route::get('/Movie','MovieController@index')->name('movieIndex');
 Route::get('/Movie/create','MovieController@create')->name('movieCreation');
 Route::get('/Movie/{id}','MovieController@show')->name('movieShow');
-
 Route::post('/Movie/store','MovieController@store')->name('movieStore');
 Route::get('/Movie/edit/{id}','MovieController@edit')->name('movieEdit');
 Route::put('/Movie/edit/{id}','MovieController@update')->name('movieUpdate');
