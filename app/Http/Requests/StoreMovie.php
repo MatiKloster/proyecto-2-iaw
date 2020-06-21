@@ -24,8 +24,8 @@ class StoreMovie extends FormRequest
     public function rules()
     {
         return [
-            'name'=>"required|max:50|regex:/^[a-z ,'.-]+$/i",
-            'director'=>"required|max:50|regex:/^[a-z ,'.-]+$/i",
+            'name'=>"required|max:50",
+            'director'=>"required|max:50",
             'year'=>'required|numeric|max:'.date('Y').'',
             'genre'=>'required|alpha|max:50',
             'quantity'=>'numeric|required',

@@ -24,13 +24,13 @@ class StoreAlbum extends FormRequest
     public function rules()
     {
         return [
-            'name'=>'required|alpha|max:50',
-            'artist'=>"required|regex:/^[a-z ,'.-]+$/i|max:50",
+            'name'=>'required|max:50',
+            'artist'=>"required|max:50",
             'year'=>'required|numeric|max:'.date('Y').'',
-            'genre'=>'required|alpha|max:50',
+            'genre'=>'required|max:50',
             'quantity'=>'numeric|required',
             'price'=>'numeric|required',
-            'image'=>'image|required',
+            'image'=>'required|file|image',
             //
         ];
     }
