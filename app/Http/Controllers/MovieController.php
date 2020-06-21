@@ -26,7 +26,7 @@ class MovieController extends Controller
     public function create()
     {
         $movie=true;
-        return view('album.create', compact('movie'));
+        return view('movie.create', compact('movie'));
     }
 
     /**
