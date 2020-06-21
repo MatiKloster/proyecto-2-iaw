@@ -1,10 +1,10 @@
 <div class="form-group">
     <label>Nombre</label>
-    <input type="text" name="name" class="form-control" placeholder="e.g Load" value="@if (isset($album->name)){{$album->name}}@endif">
+    <input type="text" name="name" class="form-control" placeholder="e.g Load" value="@if (isset($album->name)){{old('name','asdasd')}}@else {{old('name',NULL)}}@endif">
 </div>
 <div class="form-group">
     <label>Artista </label>
-    <input type="text" name="artist" class="form-control" placeholder="e.g Metallica" value="@if (isset($album->artist)){{$album->artist}}@endif">
+    <input type="text" name="artist" class="form-control" placeholder="e.g Metallica" value="@if (isset($album->artist)){{old('artist',$album->artist)}}@else {{old('artist')}}@endif">
 </div>
 <div class="form-group">
     <label >Año</label>
@@ -12,7 +12,7 @@
 </div>
 <div class="form-group">
     <label>Genero</label>
-    <input type="text" name="genre" class="form-control" placeholder="e.g Thrash Metal"value="@if (isset($album->genre)){{$album->genre}}@endif">
+    <input type="text" name="genre" class="form-control" placeholder="e.g Thrash Metal"value="@if (isset($album->genre)){{old('genre',$album->genre)}}@else {{old('genre')}}@endif">
 </div>
 <div class="form-group">
     <label>Cantidad reservable</label>

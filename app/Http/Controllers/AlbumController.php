@@ -36,10 +36,14 @@ class AlbumController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreAlbum $request)
+    public function store(Request $request)
     {
-        $validate=$request->validated();
+        $validate=$this->getValidation($request);
         
+        $validate=array_merge($request->validate([
+            'image'=>'file|image|max:5000',
+        ]),$validate);
+        dd($validate);
         $this->saveData(null,$validate)->save();
 
         return redirect()->route('albumIndex')->with('message','El album fue almcenado con exito!');
@@ -76,12 +80,18 @@ class AlbumController extends Controller
      * @param  \App\Album  $album
      * @return \Illuminate\Http\Response
      */
-    public function update(StoreAlbum $request,$id)
+    public function update(Request $request,$id)
     {
         //the inputs gets validated
-        $validate=$request->validated();
-        $album=Album::findOrFail($id);
+        $validate=$this->getValidation($request);
+        if($request->has('image')){
+            $validate=array_merge($request->validate([
+                'image'=>'file|image|max:5000',
+            ]),$validate);
+        }
 
+
+        $album=Album::findOrFail($id);
         $this->saveData($album,$validate)->save();
 
         return redirect()->route('albumIndex')->with('message','El album fue editado con exito!');
@@ -111,8 +121,20 @@ class AlbumController extends Controller
         $album->quantity = $validate['quantity'];
         $album->price = $validate['price'];
         
-        $album->cover = $validate['image']->store('uploads','public');
+        if(array_key_exists("image",$validate)){
+            $album->cover = $validate['image']->store('uploads','public');
+        }
         
         return $album;
+    }
+    private function getValidation(Request $request){
+        return $request->validate([
+            'name'=>'required|max:50',
+            'artist'=>"required|max:50",
+            'year'=>'required|numeric|max:'.date('Y').'',
+            'genre'=>'required|max:50',
+            'quantity'=>'numeric|required',
+            'price'=>'numeric|required',
+        ]);
     }
 }

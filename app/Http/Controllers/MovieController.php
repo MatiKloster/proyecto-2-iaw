@@ -35,10 +35,14 @@ class MovieController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreMovie $request)
+    public function store(Request $request)
     {
-        $validate=$request->validated();
+        $validate=$this->getValidation($request);
         
+        $validate=array_merge($request->validate([
+            'image'=>'required|file|image|max:5000',
+        ]),$validate);
+
         $this->saveData(null,$validate)->save();
 
         return redirect()->route('movieIndex')->with('message','La pelicula fue almacenada con exito!');
@@ -75,10 +79,15 @@ class MovieController extends Controller
      * @param  \App\Movie  $movie
      * @return \Illuminate\Http\Response
      */
-    public function update(StoreMovie $request, $id)
+    public function update(Request $request, $id)
     {
          //the inputs gets validated
-         $validate=$request->validated();
+         $validate=$this->getValidation($request);
+         if($request->has('image')){
+            $validate=array_merge($request->validate([
+                'image'=>'file|image|max:5000',
+            ]),$validate);
+        }
 
          $movie=Movie::findOrFail($id);
         
@@ -101,7 +110,7 @@ class MovieController extends Controller
         return redirect()->route('movieIndex')->with('message','La pelicula fue elminado con exito!');
     }
 
-    private function saveData($movie,$validate){
+    public function saveData($movie,$validate){
         if(is_null($movie)){
             $movie = new Movie();
         }
@@ -113,8 +122,22 @@ class MovieController extends Controller
         $movie->quantity = $validate['quantity'];
         $movie->price = $validate['price'];
         
-        $movie->cover=$validate['image']->store('uploads','public');
+        if(array_key_exists('image',$validate)){
+            $movie->cover=$validate['image']->store('uploads','public');
+        }
         
         return $movie;
     }
+
+    public function getValidation(Request $request){
+        return $request->validate([
+            'name'=>'required|max:50',
+            'director'=>"required|max:50",
+            'year'=>'required|numeric|max:'.date('Y').'',
+            'genre'=>'required|max:50',
+            'quantity'=>'numeric|required',
+            'price'=>'numeric|required',
+        ]);
+    }
+
 }

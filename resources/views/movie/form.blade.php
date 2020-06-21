@@ -1,18 +1,18 @@
 <div class="form-group">
     <label>Nombre</label>
-    <input type="text" name="name" class="form-control" placeholder="e.g Titanic" value="@if (isset($movie->name)){{$movie->name}}@endif">
+    <input type="text" name="name" class="form-control" placeholder="e.g Load" value="@if (isset($movie->name)){{old('name','asdasd')}}@else {{old('name',NULL)}}@endif">
 </div>
 <div class="form-group">
-    <label>Artista </label>
-    <input type="text" name="director" class="form-control" placeholder="e.g James Cameron" value="@if (isset($movie->director)){{$movie->director}}@endif">
+    <label>Director </label>
+    <input type="text" name="director" class="form-control" placeholder="e.g Metallica" value="@if (isset($movie->director)){{old('director',$movie->director)}}@else {{old('director')}}@endif">
 </div>
 <div class="form-group">
     <label >Año</label>
-    <input type="number" min=0 name="year" class="form-control"placeholder="e.g 1998" value="@if (isset($movie->year)){{$movie->year}}@endif">
+    <input type="number" min=0 name="year" class="form-control"placeholder="e.g 1995" value="@if (isset($movie->year)){{$movie->year}}@endif">
 </div>
 <div class="form-group">
     <label>Genero</label>
-    <input type="text" name="genre" class="form-control" placeholder="e.g Clásico"value="@if (isset($movie->genre)){{$movie->genre}}@endif">
+    <input type="text" name="genre" class="form-control" placeholder="e.g Thrash Metal"value="@if (isset($movie->genre)){{old('genre',$movie->genre)}}@else {{old('genre')}}@endif">
 </div>
 <div class="form-group">
     <label>Cantidad reservable</label>
