@@ -15,7 +15,7 @@
                     <div class="card mb-4" style="min-width: 18rem; max-width: 18rem;" >
                         <img src="{{ asset('storage/'.$album->cover) }}" class="card-img-top" alt="...">
                         <div class="card-body">
-                            <h4 class="card-title">{{$album->name}}</h4>
+                            <h5 class="card-title">{{$album->name}}</h5>
                             <p class="font-weight-bold blue-text">{{$album->artist}}</p>
                             <ul class="list-group list-group-flush">
                                 <li class="list-group-item">{{$album->year}}</li>

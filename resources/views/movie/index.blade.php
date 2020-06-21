@@ -14,7 +14,7 @@
                     <div class="card mb-4" style="min-width: 18rem; max-width: 18rem;">
                         <img src="{{ asset('storage/'. $movie->cover) }}" class="card-img-top" alt="...">
                         <div class="card-body">
-                            <h4 class="card-title">{{$movie->name}}</h4>
+                            <h5 class="card-title">{{$movie->name}}</h5>
                             <p class="font-weight-bold blue-text">{{$movie->director}}</p>
                         </div>
                         <ul class="list-group list-group-flush">
