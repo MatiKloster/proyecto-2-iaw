@@ -52,6 +52,11 @@
                                 </li>
                             @endif
                         @else
+                        @if (Auth::check() && Auth::user()->isAdmin)
+                        <a class="nav-link" href="/Album/create">Crear Disco</a>
+                        <a class="nav-link" href="/Movie/create">Crear Pelicula</a>
+                        <a class="nav-link" href="#">Reservas de usuarios</a>
+                        @endif
                         <li class="nav-item">
                             <a class="nav-link" href="/Album">Discos</a>
                         </li>
