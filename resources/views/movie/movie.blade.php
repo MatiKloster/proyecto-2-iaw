@@ -30,7 +30,7 @@
                     </form>
                 </div>
                 <div class="row justify-content-center mt-3">
-                    <button type="button" class="btn btn-lg" {{route('movieEdit',$movie)}}>Editar</button>
+                    <a type="button" class="btn btn-lg" href="{{route('movieEdit',$movie)}}">Editar</a>
                 </div>
                 <div class="row justify-content-center mt-4">
                     <button type="button" class="btn btn-lg" {{route('albumEdit',$album)}}>Reservar</button>
