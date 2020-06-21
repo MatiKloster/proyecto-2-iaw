@@ -14,7 +14,7 @@ class MovieController extends Controller
      */
     public function index()
     {
-        $movies = Movie::paginate(9);
+        $movies = Movie::paginate(6);
         return view('movie.index',compact('movies'));
     }
 
@@ -39,24 +39,9 @@ class MovieController extends Controller
     {
         $validate=$request->validated();
         
-        $movie = new Movie();
-        $movie->name = $validate['name'];
-        $movie->director = $validate['director'];
-        $movie->year = $validate['year'];
-        $movie->genre = $validate['genre'];
-        $movie->quantity = $validate['quantity'];
-        $movie->price = $validate['price'];
+        $this->saveData(null,$validate)->save();
 
-        
-        $file = $validate['image'];
-        $extension = $file->getClientOriginalExtension();
-        $filename = $movie->name . '.' . $extension; // files are gonna be named '<albumname>.<extension>' typically .jpg .png
-        $file->move('uploads/movies/', $filename);
-        
-        $movie->cover = $filename;
-        $movie->save();
-
-        return redirect()->route(' movieIndex')->with('message','La pelicula fue almacenada con exito!');
+        return redirect()->route('movieIndex')->with('message','La pelicula fue almacenada con exito!');
     }
 
     /**
@@ -96,20 +81,8 @@ class MovieController extends Controller
          $validate=$request->validated();
 
          $movie=Movie::findOrFail($id);
-         $movie->name = $validate['name'];
-         $movie->director = $validate['director'];
-         $movie->year = $validate['year'];
-         $movie->genre = $validate['genre'];
-         $movie->quantity = $validate['quantity'];
-         $movie->price = $validate['price'];
- 
-         $file = $validate['image'];
-         $extension = $file->getClientOriginalExtension();
-         $filename = $movie->name . '.' . $extension; // files are gonna be named '<albumname>.<extension>' typically .jpg .png
-         $file->move('uploads/albums/', $filename);
- 
-         $movie->cover = $filename;
-         $movie->save();
+        
+        $this->saveData($movie,$validate)->save();
  
          return redirect()->route('movieIndex')->with('message','La pelicula fue editada con exito!');
     }
@@ -126,5 +99,22 @@ class MovieController extends Controller
         $movie->delete();
 
         return redirect()->route('movieIndex')->with('message','La pelicula fue elminado con exito!');
+    }
+
+    private function saveData($movie,$validate){
+        if(is_null($movie)){
+            $movie = new Movie();
+        }
+        
+        $movie->name = $validate['name'];
+        $movie->director = $validate['director'];
+        $movie->year = $validate['year'];
+        $movie->genre = $validate['genre'];
+        $movie->quantity = $validate['quantity'];
+        $movie->price = $validate['price'];
+        
+        $movie->cover=$validate['image']->store('uploads','public');
+        
+        return $movie;
     }
 }

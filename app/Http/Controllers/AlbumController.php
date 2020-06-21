@@ -16,7 +16,7 @@ class AlbumController extends Controller
      */
     public function index()
     {
-        $albums = Album::paginate(9);
+        $albums = Album::paginate(6);
         return view('album.index',compact('albums'));
     }
 
@@ -40,22 +40,7 @@ class AlbumController extends Controller
     {
         $validate=$request->validated();
         
-        $album = new Album();
-        $album->name = $validate['name'];
-        $album->artist = $validate['artist'];
-        $album->year = $validate['year'];
-        $album->genre = $validate['genre'];
-        $album->quantity = $validate['quantity'];
-        $album->price = $validate['price'];
-
-        
-        $file = $validate['image'];
-        $extension = $file->getClientOriginalExtension();
-        $filename = $album->name . '.' . $extension; // files are gonna be named '<albumname>.<extension>' typically .jpg .png
-        $file->move('uploads/albums/', $filename);
-        
-        $album->cover = $filename;
-        $album->save();
+        $this->saveData(null,$validate)->save();
 
         return redirect()->route('albumIndex')->with('message','El album fue almcenado con exito!');
     }
@@ -95,22 +80,9 @@ class AlbumController extends Controller
     {
         //the inputs gets validated
         $validate=$request->validated();
-
         $album=Album::findOrFail($id);
-        $album->name = $validate['name'];
-        $album->artist = $validate['artist'];
-        $album->year = $validate['year'];
-        $album->genre = $validate['genre'];
-        $album->quantity = $validate['quantity'];
-        $album->price = $validate['price'];
 
-        $file = $validate['image'];
-        $extension = $file->getClientOriginalExtension();
-        $filename = $album->name . '.' . $extension; // files are gonna be named '<albumname>.<extension>' typically .jpg .png
-        $file->move('uploads/albums/', $filename);
-
-        $album->cover = $filename;
-        $album->save();
+        $this->saveData($album,$validate)->save();
 
         return redirect()->route('albumIndex')->with('message','El album fue editado con exito!');
     }
@@ -127,5 +99,20 @@ class AlbumController extends Controller
         $album->delete();
 
         return redirect()->route('albumIndex')->with('message','El album fue elminado con exito!');
+    }
+    private function saveData($album,$validate){
+        if(is_null($album)){
+            $album=new Album();
+        }
+        $album->name = $validate['name'];
+        $album->artist = $validate['artist'];
+        $album->year = $validate['year'];
+        $album->genre = $validate['genre'];
+        $album->quantity = $validate['quantity'];
+        $album->price = $validate['price'];
+        
+        $album->cover = $validate['image']->store('uploads','public');
+        
+        return $album;
     }
 }
