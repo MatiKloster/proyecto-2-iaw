@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateAlbumBooksTable extends Migration
+class CreateAlbumUserTable extends Migration
 {
     /**
      * Run the migrations.
@@ -15,8 +15,8 @@ class CreateAlbumBooksTable extends Migration
     {
         Schema::create('album_user', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('userId');
-            $table->unsignedBigInteger('albumId');
+            $table->unsignedBigInteger('album_id');
+            $table->unsignedBigInteger('user_id');
             $table->timestamps();
         });
     }
@@ -28,6 +28,6 @@ class CreateAlbumBooksTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('album_books');
+        Schema::dropIfExists('album_user');
     }
 }

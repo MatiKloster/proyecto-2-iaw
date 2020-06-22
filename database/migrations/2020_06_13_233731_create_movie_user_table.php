@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateMovieBooksTable extends Migration
+class CreateMovieUserTable extends Migration
 {
     /**
      * Run the migrations.
@@ -15,8 +15,8 @@ class CreateMovieBooksTable extends Migration
     {
         Schema::create('movie_user', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('userId');
-            $table->unsignedBigInteger('movieId');
+            $table->unsignedBigInteger('movie_id');
+            $table->unsignedBigInteger('user_id');
             $table->timestamps();
         });
     }
@@ -28,6 +28,6 @@ class CreateMovieBooksTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('movie_books');
+        Schema::dropIfExists('movie_user');
     }
 }

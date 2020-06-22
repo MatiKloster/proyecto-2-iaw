@@ -37,4 +37,13 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function movies(){
+
+        return $this->belongsToMany(Movie::class)->withTimestamps();
+    
+    }
+    public function albums(){
+        return $this->belongsToMany(Album::class)->withTimestamps();
+    }
 }

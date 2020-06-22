@@ -1,5 +1,15 @@
 @extends('layouts.app')
 @section('content')
+@if(session('success'))
+            <div class="alert alert-success">
+                <strong>Yey! </strong>{{session('success')}}<br><br>
+            </div>
+@endif
+@if(session('fail'))
+            <div class="alert alert-danger">
+                <strong>Ups! </strong>{{session('fail')}}<br><br>
+            </div>
+@endif
     <div class="jumbotron">
         <div class="row">
             <div class="col-3">
@@ -33,7 +43,7 @@
                     <a type="button" class="btn btn-lg textButton" href="{{route('movieEdit',$movie)}}">Editar</a>
                 </div>
                 <div class="row justify-content-center mt-4">
-                    <button type="button" class="btn btn-lg textButton" {{route('movieEdit',$movie)}}>Reservar</button>
+                    <button type="button" class="btn btn-lg textButton" href="{{route('bookMovie', ['movieId' => $movie, 'userId' => Auth::User()->id])}}">Reservar</button>
                 </div>
             </div>  
         </div>

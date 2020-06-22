@@ -39,4 +39,6 @@ Route::delete('/Movie/delete/{id}','MovieController@delete')->name('movieDelete'
 
 Auth::routes();
 
+Route::get('/Book/Album/{albumId}/{userId}','BookController@bookAlbum')->name('bookAlbum');
+Route::get('/Book/Movie/{movieId}/{userId}','BookController@bookMovie')->name('bookMovie');
 Route::get('/', 'HomeController@index')->name('home');
