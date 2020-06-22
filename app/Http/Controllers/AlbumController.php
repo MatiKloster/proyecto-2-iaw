@@ -9,7 +9,13 @@ use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\DB;
 
 class AlbumController extends Controller
-{   const paginateNumber=6;
+{   
+    public function __construct()
+    {
+        $this->middleware('admin');
+    }
+    
+    const paginateNumber=6;
     /**
      * Display a listing of the resource.
      *

@@ -8,6 +8,12 @@ use App\Http\Requests\StoreMovie;
 class MovieController extends Controller
 {   
     const paginateNumber=6;
+    
+    public function __construct()
+    {
+        $this->middleware('admin');
+    }
+
     /**
      * Display a listing of the resource.
      *
