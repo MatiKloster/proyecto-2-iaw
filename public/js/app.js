@@ -16,3 +16,7 @@ $(document).ready(function(){
         }
     );
 });
+function checkInput(){
+        var input=document.getElementById('inputSearch');
+        input.value=input.value.trim();
+}

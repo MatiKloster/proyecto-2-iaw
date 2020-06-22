@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\StoreMovie;
 class MovieController extends Controller
 {   
+    const paginateNumber=6;
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +15,7 @@ class MovieController extends Controller
      */
     public function index()
     {
-        $movies = Movie::paginate(6);
+        $movies = Movie::paginate(self::paginateNumber);
         return view('movie.index',compact('movies'));
     }
 
@@ -110,11 +111,11 @@ class MovieController extends Controller
         return redirect()->route('movieIndex')->with('message','La pelicula fue elminado con exito!');
     }
 
-    public function saveData($movie,$validate){
+    private function saveData($movie,$validate){
         if(is_null($movie)){
             $movie = new Movie();
         }
-        
+
         $movie->name = $validate['name'];
         $movie->director = $validate['director'];
         $movie->year = $validate['year'];
@@ -129,7 +130,7 @@ class MovieController extends Controller
         return $movie;
     }
 
-    public function getValidation(Request $request){
+    private function getValidation(Request $request){
         return $request->validate([
             'name'=>'required|max:50',
             'director'=>"required|max:50",
@@ -139,5 +140,14 @@ class MovieController extends Controller
             'price'=>'numeric|required',
         ]);
     }
-
+    public function search(){
+        $name=$_GET['search'];
+        if($name!=""){
+            $movies=Movie::where('name','like','%'.$name.'%')->paginate(self::paginateNumber);
+            return view('movie.index',compact('movies'));
+        }
+        else{
+            return redirect()->route('movieIndex');
+        }
+    }
 }

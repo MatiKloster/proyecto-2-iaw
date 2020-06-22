@@ -6,9 +6,10 @@ use App\Album;
 use App\Http\Requests\StoreAlbum;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\DB;
 
 class AlbumController extends Controller
-{   
+{   const paginateNumber=6;
     /**
      * Display a listing of the resource.
      *
@@ -16,26 +17,15 @@ class AlbumController extends Controller
      */
     public function index()
     {
-        $albums = Album::paginate(6);
+        $albums = Album::paginate(self::paginateNumber);
         return view('album.index',compact('albums'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
         return view('album.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
         $validate=$this->getValidation($request);
@@ -43,43 +33,23 @@ class AlbumController extends Controller
         $validate=array_merge($request->validate([
             'image'=>'file|image|max:5000',
         ]),$validate);
-        dd($validate);
         $this->saveData(null,$validate)->save();
 
         return redirect()->route('albumIndex')->with('message','El album fue almcenado con exito!');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Album  $album
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
         $album=Album::findOrFail($id);
         return view('album.album',compact('album'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Album  $album
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id)
     {
         $album=Album::findOrFail($id);
         return view('album.edit',compact('album'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $validate
-     * @param  \App\Album  $album
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request,$id)
     {
         //the inputs gets validated
@@ -97,18 +67,22 @@ class AlbumController extends Controller
         return redirect()->route('albumIndex')->with('message','El album fue editado con exito!');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Album  $album
-     * @return \Illuminate\Http\Response
-     */
     public function delete($id)
     {
         $album=Album::findOrFail($id);
         $album->delete();
 
         return redirect()->route('albumIndex')->with('message','El album fue elminado con exito!');
+    }
+    public function search(){
+        $name=$_GET['search'];
+        if($name!=""){
+            $albums=Album::where('name','like','%'.$name.'%')->paginate(self::paginateNumber);
+            return view('album.index',compact('albums'));
+        }
+        else{
+            return redirect()->route('albumIndex');
+        }
     }
     private function saveData($album,$validate){
         if(is_null($album)){

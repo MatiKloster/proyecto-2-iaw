@@ -36,9 +36,19 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
-
+                        @if (Auth::check() && Auth::user()->isAdmin)
+                        <li class="nav-item dropdown">
+                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                Admin tab <span class="caret"></span>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="/Album/create">Crear Disco</a>
+                                <a class="dropdown-item" href="/Movie/create">Crear Película</a>
+                                <a class="dropdown-item" href="/Movie/create">Reservas de usuarios</a>
+                            </div>
+                            </li>
+                        @endif
                     </ul>
-
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
@@ -52,11 +62,7 @@
                                 </li>
                             @endif
                         @else
-                        @if (Auth::check() && Auth::user()->isAdmin)
-                        <a class="nav-link" href="/Album/create">Crear Disco</a>
-                        <a class="nav-link" href="/Movie/create">Crear Pelicula</a>
-                        <a class="nav-link" href="#">Reservas de usuarios</a>
-                        @endif
+                        
                         <li class="nav-item">
                             <a class="nav-link" href="/Album">Discos</a>
                         </li>
@@ -77,11 +83,9 @@
                                                      document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
                                     </a>
-
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                         @csrf
                                     </form>
-                                    
                                 </div>
                             </li>
                         @endguest
