@@ -5,8 +5,7 @@ namespace App\Http\Controllers;
 use App\User;
 use App\Album;
 use App\Movie;
-use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\DB;
 class BookController extends Controller
 {
     //
@@ -49,8 +48,13 @@ class BookController extends Controller
         }
     }
 
-    public function showAllBooks(){
+    public function index(){
+        
+        $albums = $this->getBookedAlbumsView();
 
+        $movies = $this->getBookedMoviesView();
+
+        return view('book.index',compact('albums','movies'));
     }
     
     public function showBookedAlbumsForUser($userId){
@@ -68,16 +72,20 @@ class BookController extends Controller
         return $movies;
     }
 
-    public function showBookedMovies(){
-        $movies=Movie::with('users');
-        return $movies;
-
-    }
-    public function showBookedAlbums(){
-        $albums=Album::with('users');
-        return $albums;
+    private function getBookedAlbumsView(){
+        return  DB::table('album_user')
+            ->join('albums', 'album_user.album_id', '=', 'albums.id')
+            ->join('users', 'album_user.user_id', '=', 'users.id')
+            ->select('users.name as userName', 'album_user.created_at as createdAt','albums.name as albumName')
+            ->get();
     }
 
-
+    private function getBookedMoviesView(){
+        return  DB::table('movie_user')
+            ->join('movies', 'movie_user.movie_id', '=', 'movies.id')
+            ->join('users', 'movie_user.user_id', '=', 'users.id')
+            ->select('users.name as userName', 'movie_user.created_at as createdAt','movies.name as movieName')
+            ->get();
+    }
 
 }
