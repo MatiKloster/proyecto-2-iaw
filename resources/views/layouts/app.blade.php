@@ -42,9 +42,10 @@
                                 Admin tab <span class="caret"></span>
                             </a>
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="/Album/create">Crear Disco</a>
-                                <a class="dropdown-item" href="/Movie/create">Crear Película</a>
-                                <a class="dropdown-item" href="/Movie/create">Reservas de usuarios</a>
+                                <a class="dropdown-item" href="{{route('albumCreation')}}">Crear Disco</a>
+                                <a class="dropdown-item" href="{{route('movieCreation')}}">Crear Película</a>
+                                <a class="dropdown-item" href="{{route('bookIndex')}}">Reservas de usuarios</a>
+                                <a class="dropdown-item" href="{{route('adminCreation')}}">Registrar usuario</a>
                             </div>
                             </li>
                         @endif
@@ -93,9 +94,13 @@
                 </div>
             </div>
         </nav>
-
         <main class="py-4">
             <div class="col-md-8 offset-md-2">
+                @if (session('error'))
+                <div class="alert alert-danger">
+                    <strong>Wep </strong>{{session('error')}}<br><br>
+                </div>
+                @endif
                 @yield('content')
             </div>
         </main>
