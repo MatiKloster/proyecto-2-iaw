@@ -13,13 +13,10 @@ class CreateAlbumBooksTable extends Migration
      */
     public function up()
     {
-        Schema::create('album_books', function (Blueprint $table) {
-            $table->id();
-            $table->bigInteger('userId')->unsigned();
-            $table->foreign('userId')->references('id')->on('users');
-            $table->bigInteger('albumId')->unsigned();
-            $table->foreign('albumId')->references('id')->on('albums');
-            $table->date('bookDate');
+        Schema::create('album_user', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->unsignedBigInteger('userId');
+            $table->unsignedBigInteger('albumId');
             $table->timestamps();
         });
     }

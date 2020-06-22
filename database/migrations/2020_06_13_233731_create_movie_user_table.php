@@ -13,13 +13,10 @@ class CreateMovieBooksTable extends Migration
      */
     public function up()
     {
-        Schema::create('movie_books', function (Blueprint $table) {
-            $table->id();
-            $table->bigInteger('userId')->unsigned();
-            $table->foreign('userId')->references('id')->on('users');
-            $table->bigInteger('movieId')->unsigned();
-            $table->foreign('movieId')->references('id')->on('movies');
-            $table->date('bookDate');
+        Schema::create('movie_user', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->unsignedBigInteger('userId');
+            $table->unsignedBigInteger('movieId');
             $table->timestamps();
         });
     }
