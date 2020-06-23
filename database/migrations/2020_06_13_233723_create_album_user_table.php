@@ -16,7 +16,9 @@ class CreateAlbumUserTable extends Migration
         Schema::create('album_user', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('album_id');
+            $table->foreign('album_id')->references('id')->on('albums');
             $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();
         });
     }
