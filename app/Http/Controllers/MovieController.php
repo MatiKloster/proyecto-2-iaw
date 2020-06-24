@@ -5,6 +5,10 @@ namespace App\Http\Controllers;
 use App\Movie;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreMovie;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Str;
+
 class MovieController extends Controller
 {   
     const paginateNumber=6;
@@ -64,6 +68,15 @@ class MovieController extends Controller
     public function show($id)
     {
         $movie=Movie::findOrFail($id);
+
+        $image = $movie->cover;  // your base64 encoded
+        $image = str_replace('data:image/png;base64,', '', $image);
+        $image = str_replace(' ', '+', $image);
+        $imageName = Str::random(10).'.'.'png';
+        File::put('uploads/movies'.'/'. $imageName, base64_decode($image));
+
+        $movie->setPath('uploads/movies'.'/'. $imageName);
+
         return view('movie.movie',compact('movie'));
     }
 
@@ -128,9 +141,10 @@ class MovieController extends Controller
         $movie->genre = $validate['genre'];
         $movie->quantity = $validate['quantity'];
         $movie->price = $validate['price'];
-        
+
         if(array_key_exists('image',$validate)){
-            $movie->cover=$validate['image']->store('uploads','public');
+            //$movie->cover=$validate['image']->store('uploads','public');
+            $movie->cover=base64_encode(file_get_contents($validate['image']));
         }
         
         return $movie;
