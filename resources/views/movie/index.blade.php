@@ -26,7 +26,7 @@
                 @foreach ($movies as $movie)
                 <div class="col-4-lg">
                     <div class="card mb-4" style="min-width: 18rem; max-width: 18rem;">
-                        <img src="{{ asset('storage/'. $movie->cover) }}" class="card-img-top" alt="...">
+                        <img src="data:image/jpg;base64, {{$movie->cover}}" class="card-img-top" alt="...">
                         <div class="card-body">
                             <h5 class="card-title">{{$movie->name}}</h5>
                             <p class="font-weight-bold blue-text">{{$movie->director}}</p>

@@ -23,5 +23,8 @@
         @include('album.form')
         <button type="submit" name="submit" class="btn btn-dark textButton">Guardar</button>
     </form>
+    <div class="col-3">
+        <img src="data:image/jpg;base64, {{$album->cover}}" class="img-fluid" alt="No se ha encontrado la imagen">
+    </div>
 </div>
 @endsection

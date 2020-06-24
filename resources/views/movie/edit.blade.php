@@ -7,7 +7,6 @@
                 <strong>Yey!</strong>{{session('message')}}<br><br>
             </div>
     @endif
-    <form action="{{  route('movieUpdate',$movie->id) }}" method="POST" enctype="multipart/form-data">
     @if (count($errors) > 0)
         <div class="alert alert-danger">
             <strong>Ups!</strong> Hay un par de problemas con las inputs.<br><br>
@@ -18,10 +17,14 @@
             </ul>
         </div>
     @endif
+    <form action="{{  route('movieUpdate',$movie->id) }}" method="POST" enctype="multipart/form-data">
         @method('PUT')
         @csrf
         @include('movie.form')
         <button type="submit" name="submit" class="btn btn-dark textButton">Guardar</button>
     </form>
+    <div class="col-3">
+        <img src="data:image/jpg;base64, {{$movie->cover}}" class="img-fluid" alt="No se ha encontrado la imagen">
+    </div>
 </div>
 @endsection

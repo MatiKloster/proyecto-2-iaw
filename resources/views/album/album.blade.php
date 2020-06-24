@@ -13,7 +13,7 @@
     <div class="jumbotron">
         <div class="row">
             <div class="col-3">
-                <img src="{{asset('storage/'.$album->cover)}}" class="img-fluid" alt="No se ha encontrado la imagen">
+                <img src="data:image/jpg;base64, {{$album->cover}}" class="img-fluid" alt="No se ha encontrado la imagen">
             </div>
             <div class="col-6">
                 <div class="card" style="max-width: 540px;">
