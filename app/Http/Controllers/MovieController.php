@@ -73,7 +73,7 @@ class MovieController extends Controller
         $image = str_replace('data:image/png;base64,', '', $image);
         $image = str_replace(' ', '+', $image);
         $imageName = Str::random(10).'.'.'png';
-        File::put('uploads/movies'.'/'. $imageName, base64_decode($image));
+        //File::put('uploads/movies'.'/'. $imageName, base64_decode($image));
 
         $movie->setPath('uploads/movies'.'/'. $imageName);
 
