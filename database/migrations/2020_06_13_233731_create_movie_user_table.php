@@ -16,9 +16,9 @@ class CreateMovieUserTable extends Migration
         Schema::create('movie_user', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('movie_id');
-            $table->foreign('movie_id')->references('id')->on('movies');
+            $table->foreign('movie_id')->references('id')->on('movies')->onDelete('cascade');;
             $table->unsignedBigInteger('user_id');
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });
     }
