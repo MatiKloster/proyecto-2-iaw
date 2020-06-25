@@ -43,7 +43,7 @@
                     <a type="button" class="btn btn-lg textButton" href="{{route('albumEdit',$album)}}">Editar</a>
                 </div>
                 <div class="row justify-content-center mt-4">
-                    <a type="button" class="btn btn-lg textButton" href="{{route('bookAlbum', ['albumId' => $album, 'userId' => Auth::User()->id])}}">Reservar</a>
+                    <a type="button" class="btn btn-lg textButton" href="{{route('bookAlbum',$album)}}">Reservar</a>
                 </div>
             </div>  
         </div>

@@ -43,7 +43,7 @@
                     <a type="button" class="btn btn-lg textButton" href="{{route('movieEdit',$movie)}}">Editar</a>
                 </div>
                 <div class="row justify-content-center mt-4">
-                    <button type="button" class="btn btn-lg textButton" href="{{route('bookMovie', ['movieId' => $movie, 'userId' => Auth::User()->id])}}">Reservar</button>
+                    <a type="button" class="btn btn-lg textButton" href="{{route('bookMovie',$movie)}}">Reservar</a>
                 </div>
             </div>  
         </div>
