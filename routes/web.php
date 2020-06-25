@@ -39,9 +39,13 @@ Route::delete('/Movie/delete/{id}','MovieController@delete')->name('movieDelete'
 
 Auth::routes();
 
-Route::get('/Book/Album/{albumId}/{userId}','BookController@bookAlbum')->name('bookAlbum');
-Route::get('/Book/Movie/{movieId}/{userId}','BookController@bookMovie')->name('bookMovie');
+Route::get('/User/Book/Album/{albumId}','BookController@bookAlbum')->name('bookAlbum');
+Route::get('/User/Book/Movie/{movieId}','BookController@bookMovie')->name('bookMovie');
 Route::get('/Book','BookController@index')->name('bookIndex')->middleware('admin');
+
+Route::get('/User/books','BookController@showBooksForUser')->name('userBooks')->withoutMiddleware('admin');
+Route::delete('/User/books/Album/delete/{id}','BookController@deleteBookedAlbum')->name('albumBookedDeleteForUser')->withoutMiddleware('admin');
+Route::delete('/User/books/Movie/delete/{id}','BookController@deleteBookedMovie')->name('movieBookedDeleteForUser')->withoutMiddleware('admin');
 
 Route::get('/Admin/register','AdminController@create')->name('adminCreation');
 Route::post('/Admin/store','AdminController@store')->name('adminStore');
