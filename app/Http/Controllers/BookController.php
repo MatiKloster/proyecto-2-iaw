@@ -22,10 +22,12 @@ class BookController extends Controller
         $exists = $user->movies()->where('movie_id', $movieId)->exists();
 
         if ((!$exists) && $movie->quantity > 0) {
-            $user->movies()->attach($movieId);
+            DB::transaction(function () use ($user, $movieId, $movie) {
+                $user->movies()->attach($movieId);
 
-            $movie->quantity -= 1;
-            $movie->save();
+                $movie->quantity -= 1;
+                $movie->save();
+            });
 
             return back()->with('success', 'Has reservado la película con exito! :)');
         } else {
@@ -41,10 +43,12 @@ class BookController extends Controller
         $exists = $user->albums()->where('album_id', $albumId)->exists();
 
         if ((!$exists) && ($album->quantity > 0)) {
-            $user->albums()->attach($albumId);
+            DB::transaction(function () use ($user, $albumId, $album) {
+                $user->albums()->attach($albumId);
 
-            $album->quantity -= 1;
-            $album->save();
+                $album->quantity -= 1;
+                $album->save();
+            });
 
             return back()->with('success', 'Has reservado el disco con exito! :)');
         } else {
@@ -76,10 +80,13 @@ class BookController extends Controller
         $user = User::findOrFail(Auth::user()->id);
         $album = Album::findOrFail($id);
 
-        $user->albums()->detach($id);
-        $album->quantity += 1;
+        DB::transaction(function () use ($user, $id, $album) {
+            $user->albums()->detach($id);
+            $album->quantity += 1;
 
-        $album->save();
+            $album->save();
+        });
+
         return back()->with('success', 'Cancelaste la reserva del disco con exito!');
     }
 
@@ -88,10 +95,13 @@ class BookController extends Controller
         $user = User::findOrFail(Auth::user()->id);
         $movie = Movie::findOrFail($id);
 
-        $user->movies()->detach($id);
-        $movie->quantity += 1;
+        DB::transaction(function () use ($user, $id, $movie) {
+            $user->movies()->detach($id);
+            $movie->quantity += 1;
 
-        $movie->save();
+            $movie->save();
+        });
+
         return back()->with('success', 'Cancelaste la reserva de la pelicula con exito!');
     }
 
