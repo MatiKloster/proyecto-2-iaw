@@ -20,7 +20,7 @@
     </form>
 </div>
 <div class="container mt-5">
-    <div class="row">
+    <div class="row justify-content-center">
         <div class="card-wrapper">
             <div class="card-deck">
                 @foreach ($albums as $album)
