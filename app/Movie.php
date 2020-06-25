@@ -7,8 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 class Movie extends Model
 {
     protected $fillable=['name','director','cover','year','genre','quantity','price'];
-    
-    protected $path;
 
     public function users(){
 
@@ -16,11 +14,10 @@ class Movie extends Model
     
     }
     
-    public function getPath(){
-        return $this->path;
-    }
+    public function delete()
+    {
+        $this->users()->detach();
 
-    public function setPath($path){
-        $this->path= $path;
+        return parent::delete();
     }
 }

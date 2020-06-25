@@ -46,4 +46,11 @@ class User extends Authenticatable
     public function albums(){
         return $this->belongsToMany(Album::class)->withTimestamps();
     }
+    public function delete()
+    {
+        $this->movies()->detach();
+        $this->album()->detach();
+
+        return parent::delete();
+    }
 }
