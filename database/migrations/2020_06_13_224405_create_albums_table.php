@@ -17,7 +17,7 @@ class CreateAlbumsTable extends Migration
             $table->bigIncrements('id');
             $table->string('name');
             $table->string('artist');
-            $table->string('cover');
+            $table->longText('cover');
             $table->integer('year');
             $table->string('genre');
             $table->integer('quantity');
