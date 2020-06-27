@@ -49,6 +49,8 @@ Route::delete('/User/books/Movie/delete/{id}','BookController@deleteBookedMovie'
 
 Route::get('/Admin/register','AdminController@create')->name('adminCreation');
 Route::post('/Admin/store','AdminController@store')->name('adminStore');
+Route::get('/Admin/books/search/user','BookController@searchBooksForUser')->name('bookSearchUser');
+Route::get('/Admin/books/search/product','BookController@searchBookedProduct')->name('bookSearchProduct');
 Route::delete('/Admin/books/delete/Movie/{id}/User/{userId}','AdminController@deleteBookedMovieForUser')->name('adminBookedMovieDelete');
 Route::delete('/Admin/books/delete/Album/{id}/User/{userId}','AdminController@deleteBookedAlbumForUser')->name('adminBookedAlbumDelete');
 Route::get('/', 'HomeController@index')->name('home');

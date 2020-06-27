@@ -104,6 +104,44 @@ class BookController extends Controller
         return back()->with('success', 'Cancelaste la reserva de la pelicula con exito!');
     }
 
+    public function searchBooksForUser()
+    {
+        $username=$_GET['searchUser'];
+        if($username!=""){
+            $albums = $this->getBookedAlbumsView()->filter(function ($user) use ($username){
+                return false !== strstr($user->userName, $username);
+            });
+
+            $movies = $this->getBookedMoviesView()->filter(function ($user) use ($username){
+                return false !== strstr($user->userName, $username);
+            });
+
+            return view('book.index', compact('albums', 'movies'));
+        }
+        else{
+            return redirect()->route('bookIndex');
+        }
+         
+    }
+
+    public function searchBookedProduct()
+    {   
+        $prodName=$_GET['searchProduct'];
+        if($prodName!=""){
+            $albums = $this->getBookedAlbumsView()->filter(function ($album) use ($prodName){
+                return false !== stristr($album->albumName, $prodName);
+            });
+            
+            $movies = $this->getBookedMoviesView()->filter(function ($movie) use ($prodName){
+                return false !== stristr($movie->movieName, $prodName);
+            });
+            
+            return view('book.index', compact('albums', 'movies'));
+        }
+        else{
+            return redirect()->route('bookIndex');
+        }
+   }
 
     public function getBookedAlbumsForUser($userId)
     {

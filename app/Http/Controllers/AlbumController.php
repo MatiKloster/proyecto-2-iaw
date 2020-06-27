@@ -80,7 +80,8 @@ class AlbumController extends Controller
 
         return redirect()->route('albumIndex')->with('message','El album fue elminado con exito!');
     }
-    public function search(){
+    public function search()
+    {
         $name=$_GET['search'];
         if($name!=""){
             $albums=Album::where('name','like','%'.$name.'%')->paginate(self::paginateNumber);
