@@ -71,7 +71,6 @@ class BookController extends Controller
         $albums = $this->getBookedAlbumsForUser(Auth::user()->id);
 
         $movies = $this->getBookedMoviesForUser(Auth::user()->id);
-        //dd($movies,$albums);
         return view('user.books', compact('albums', 'movies'));
     }
 
@@ -105,6 +104,7 @@ class BookController extends Controller
         return back()->with('success', 'Cancelaste la reserva de la pelicula con exito!');
     }
 
+
     public function getBookedAlbumsForUser($userId)
     {
         $user = User::findOrFail($userId);
@@ -126,7 +126,7 @@ class BookController extends Controller
         return  DB::table('album_user')
             ->join('albums', 'album_user.album_id', '=', 'albums.id')
             ->join('users', 'album_user.user_id', '=', 'users.id')
-            ->select('users.name as userName', 'album_user.created_at as createdAt', 'albums.name as albumName')
+            ->select('users.name as userName', 'album_user.created_at as createdAt', 'albums.name as albumName','users.id as userId','albums.id as id')
             ->get();
     }
 
@@ -135,7 +135,7 @@ class BookController extends Controller
         return  DB::table('movie_user')
             ->join('movies', 'movie_user.movie_id', '=', 'movies.id')
             ->join('users', 'movie_user.user_id', '=', 'users.id')
-            ->select('users.name as userName', 'movie_user.created_at as createdAt', 'movies.name as movieName')
+            ->select('users.name as userName', 'movie_user.created_at as createdAt', 'movies.name as movieName','users.id as userId','movies.id as id')
             ->get();
     }
 }
