@@ -102,7 +102,7 @@ class AlbumController extends Controller
         $album->price = $validate['price'];
         
         if(array_key_exists("image",$validate)){
-            $album->cover = $validate['image']->store('uploads','public');
+            $album->cover=base64_encode(file_get_contents($validate['image']));
         }
         
         return $album;

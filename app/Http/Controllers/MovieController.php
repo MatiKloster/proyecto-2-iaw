@@ -135,7 +135,6 @@ class MovieController extends Controller
         $movie->price = $validate['price'];
 
         if(array_key_exists('image',$validate)){
-            //$movie->cover=$validate['image']->store('uploads','public');
             $movie->cover=base64_encode(file_get_contents($validate['image']));
         }
         
