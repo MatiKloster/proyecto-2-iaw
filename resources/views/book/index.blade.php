@@ -18,7 +18,7 @@
         <td>{{$album->albumName}}</td>
         <td>{{$album->createdAt}}</td>
         <td>
-          <form action="{{route('albumBookedDeleteForUser',['id' => $album->id,'userId' => $album->userId])}}" method="POST">
+          <form action="{{route('adminBookedAlbumDelete',['id' => $album->id,'userId' => $album->userId])}}" method="POST">
             @method('DELETE')
             @csrf
             <button type="submit" class="btn btn-lg textButton"  onclick="return confirm('Estas por cancelar la reserva, estás seguro?')">Cancelar</button>
@@ -32,7 +32,7 @@
         <td>{{$movie->movieName}}</td>
         <td>{{$movie->createdAt}}</td>
         <td>
-          <form action="{{route('albumBookedDeleteForUser',['id' => $movie->id,'userId' => $movie->userId])}}" method="POST">
+          <form action="{{route('adminBookedMovieDelete',['id' => $movie->id,'userId' => $movie->userId])}}" method="POST">
             @method('DELETE')
             @csrf
             <button type="submit" class="btn btn-lg textButton"  onclick="return confirm('Estas por cancelar la reserva, estás seguro?')">Cancelar</button>
