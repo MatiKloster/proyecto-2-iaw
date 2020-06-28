@@ -21,6 +21,10 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->boolean('isAdmin');
             $table->rememberToken();
+            $table->string('api_token', 80)->after('password')
+                        ->unique()
+                        ->nullable()
+                        ->default(null);
             $table->timestamps();
         });
     }

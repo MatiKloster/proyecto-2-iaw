@@ -1,12 +1,6 @@
 <?php
-
-use App\Http\Resources\ProductCollection;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Movie;
-use App\Album;
-use App\Http\Resources\AlbumCollection;
-use App\Http\Resources\MovieCollection;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,10 +21,12 @@ Route::get('/movies', 'ApiController@movies');
 Route::get('/movies/{id}', 'ApiController@movie');
 Route::get('/movies/image/{id}', 'ApiController@movieImage');
 
-Route::get('/albums', 'ApiController@albums');
+Route::get('/albums', 'ApiController@albums')->middleware('auth:api');
 Route::get('/albums/{id}', 'ApiController@album');
 Route::get('/albums/image/{id}', 'ApiController@albumImage');
 
 Route::get('/user/albums/{id}', 'ApiController@userAlbumBooks');
 Route::get('/user/movies/{id}', 'ApiController@userMovieBooks');
+
+Route::get('/user/token','TokenController@getToken');
 
