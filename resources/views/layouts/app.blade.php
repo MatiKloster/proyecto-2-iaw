@@ -107,6 +107,7 @@
             </div>
         </main>
     </div>
+    <div class="footer"> <strong>&copy;</strong>Matías Kloster - Universidad Nacional del Sur - Argentina <div class="ml-auto">Código <a href="https://github.com/MatiKloster/proyecto-2-iaw" target="#blank">aquí</a></div></div>
 </body>
 @yield('scripts')
 </html>
