@@ -78,7 +78,8 @@
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{route('userBooks')}}">Mis Reservas</a>
-                                    <a class="dropdown-item" href="#">Cambiar contraseña</a>
+                                    <a class="dropdown-item" href="{{route('password.request')}}">Cambiar contraseña</a>
+                                    <a class="dropdown-item" href="{{route('token')}}">Token</a>
                                     <div class="dropdown-divider"></div>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();

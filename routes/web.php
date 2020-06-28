@@ -54,3 +54,5 @@ Route::get('/Admin/books/search/product','BookController@searchBookedProduct')->
 Route::delete('/Admin/books/delete/Movie/{id}/User/{userId}','AdminController@deleteBookedMovieForUser')->name('adminBookedMovieDelete');
 Route::delete('/Admin/books/delete/Album/{id}/User/{userId}','AdminController@deleteBookedAlbumForUser')->name('adminBookedAlbumDelete');
 Route::get('/', 'HomeController@index')->name('home');
+
+Route::get('/Token','TokenController@show')->name('token');
