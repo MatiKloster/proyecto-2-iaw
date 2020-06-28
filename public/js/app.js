@@ -5,14 +5,14 @@ $(document).ready(function(){
         function(){
             $(this).animate({
                 marginTop: "-=1%",
-            },200);
+            },30);
         },
 
         // trigger when mouse out
         function(){
             $(this).animate({
                 marginTop: "0%"
-            },200);
+            },30);
         }
     );
 });
