@@ -28,9 +28,9 @@
                         @include('shared.form')
                         <div class="form-group row">
                             <label for="isAdmin" class="col-md-4 col-form-label text-md-right">{{ __('Es admin?') }}</label>
-                        
+                            {{Form::hidden('isAdmin',0)}}
                             <div class="col-md-6">
-                                <input type="checkbox" name="isAdmin"aria-label="Checkbox for following text input">
+                                <input type="checkbox" name="isAdmin" value="false" aria-label="Checkbox for following text input">
                         
                                 @error('isAdmin')
                                     <span class="invalid-feedback" role="alert">
