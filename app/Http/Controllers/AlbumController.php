@@ -12,6 +12,7 @@ class AlbumController extends Controller
 {   
     public function __construct()
     {
+        $this->middleware('login');
         $this->middleware('admin');
     }
     

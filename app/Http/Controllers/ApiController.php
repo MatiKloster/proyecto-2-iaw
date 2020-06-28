@@ -11,7 +11,6 @@ use App\Http\Resources\Image as ImageResource;
 use App\User;
 use App\Http\Resources\AlbumCollection;
 use App\Http\Resources\MovieCollection;
-use Illuminate\Database\Eloquent\Collection;
 
 class ApiController extends Controller
 {

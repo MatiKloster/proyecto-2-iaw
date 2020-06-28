@@ -15,6 +15,7 @@ class MovieController extends Controller
     
     public function __construct()
     {
+        $this->middleware('login');
         $this->middleware('admin');
     }
 
