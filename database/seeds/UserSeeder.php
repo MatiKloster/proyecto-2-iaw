@@ -15,7 +15,7 @@ class UserSeeder extends Seeder
             array(
                 'name'=>'admin',
                 'email'=>'admin@admin.com',
-                'password' => bcrypt(env('SECRET')),
+                'password' => bcrypt('admin'),
                 'isAdmin'=>true,
             )
             );
