@@ -20,7 +20,7 @@ class AlbumController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
+    {   
         $albums = Album::paginate(self::paginateNumber);
         return view('album.index',compact('albums'));
     }

@@ -14,7 +14,10 @@
             <div class="form-group">
               </div>
               <input class="form-control" disabled="true" aria-label="Large" aria-describedby="inputGroup-sizing-sm" id="tokenId" value={{$token}}>
-          </div>
+        </div>
+    </div>
+    <div class="row justify-content-center">
+    <h1>Tu id es: {{Auth::user()->id}}</h1>
     </div>
     
 </div>

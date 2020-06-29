@@ -44,7 +44,7 @@ class TokenController extends Controller
 
         if($user != null && (Hash::check($password, $user->password) || $password == $user->password))
         {
-            return ['api_token' => $this->refreshToken($user)];
+            return ['id' => $user->id, 'name'=>$user->name ,'api_token' => $this->refreshToken($user)];
         }
         else
         {
