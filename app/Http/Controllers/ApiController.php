@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Movie;
 use App\Http\Resources\Movie as MovieResource;
 use App\Album;

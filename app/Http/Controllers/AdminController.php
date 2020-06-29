@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
-use GuzzleHttp\Middleware;
 use Illuminate\Support\Facades\Hash;
 use App\Album;
 use App\Movie;

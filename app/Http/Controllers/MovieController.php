@@ -4,10 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Movie;
 use Illuminate\Http\Request;
-use App\Http\Requests\StoreMovie;
-use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Facades\File;
-use Illuminate\Support\Str;
 
 class MovieController extends Controller
 {   
