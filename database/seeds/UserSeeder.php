@@ -19,6 +19,30 @@ class UserSeeder extends Seeder
                 'isAdmin'=>true,
                 'api_token'=>hash('sha256', 's3cr3tf0r4p1.Admin.EstaVezSeran3Estrellas?'),
             )
-            );
+        );
+        App\User::create(
+            array(
+                'name'=>'user1',
+                'email'=>'user@user.com',
+                'password' => bcrypt('user'),
+                'isAdmin'=>false,
+            )
+        );
+        App\User::create(
+            array(
+                'name'=>'user2',
+                'email'=>'user2@user.com',
+                'password' => bcrypt('user'),
+                'isAdmin'=>false,
+            )
+        );
+        App\User::create(
+            array(
+                'name'=>'user3',
+                'email'=>'user3@user.com',
+                'password' => bcrypt('user'),
+                'isAdmin'=>false,
+            )
+        );
     }
 }
