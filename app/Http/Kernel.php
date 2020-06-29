@@ -66,5 +66,6 @@ class Kernel extends HttpKernel
         'admin' => \App\Http\Middleware\CheckAdmin::class,
         'login' => \App\Http\Middleware\CheckLogin::class,
         'adminAPI' => \App\Http\Middleware\adminAPI::class,
+        'userAPI' => \App\Http\Middleware\userAPI::class,
     ];
 }

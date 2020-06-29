@@ -13,11 +13,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
 
-Route::get('/movies', 'ApiController@movies');
+Route::group([ 'middleware' => 'userAPI'], function()
+{   
+    Route::get('/movies', 'ApiController@movies');
 Route::get('/movies/{id}', 'ApiController@movie');
 Route::get('/movies/image/{id}', 'ApiController@movieImage');
 
@@ -31,4 +30,6 @@ Route::get('/user/movies/{id}', 'ApiController@userMovieBooks');
 Route::get('/user/token','TokenController@getToken');
 
 Route::get('/bookings','ApiController@allBookings')->middleware('adminAPI');
+});
+
 

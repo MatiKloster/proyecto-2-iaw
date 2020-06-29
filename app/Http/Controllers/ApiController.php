@@ -7,19 +7,17 @@ use App\Http\Resources\Movie as MovieResource;
 use App\Album;
 use App\Http\Resources\Movie as AlbumResource;
 use App\Http\Resources\Image as ImageResource;
-use App\User;
 use App\Http\Resources\AlbumCollection;
 use App\Http\Resources\BookCollection;
 use App\Http\Resources\MovieCollection;
 use App\Traits\Bookings;
-use Illuminate\Http\Request;
 
 class ApiController extends Controller
 {
     use Bookings;
     public function __construct()
     {
-        $this->middleware('auth:api');
+        $this->middleware('userAPI');
     }
     public function movies()
     {
