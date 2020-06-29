@@ -12,6 +12,7 @@ use App\Http\Resources\AlbumCollection;
 use App\Http\Resources\BookCollection;
 use App\Http\Resources\MovieCollection;
 use App\Traits\Bookings;
+use Illuminate\Http\Request;
 
 class ApiController extends Controller
 {
@@ -20,41 +21,49 @@ class ApiController extends Controller
     {
         $this->middleware('auth:api');
     }
-    public function movies(){
+    public function movies()
+    {
         return new MovieCollection(Movie::all());
     }
-    public function movie($id){
+    public function movie($id)
+    {
         return new MovieResource(Movie::findOrFail($id));
     }
-    public function movieImage($id){
+    public function movieImage($id)
+    {
         return new ImageResource(Movie::findOrFail($id));
     }
     
-    public function albums(){
+    public function albums()
+    {
         return new AlbumCollection(Album::all());
     }
     
-    public function album($id){
+    public function album($id)
+    {
         return new AlbumResource(Album::findOrFail($id));
     }
 
-    public function albumImage($id){
+    public function albumImage($id)
+    {
         return new ImageResource(Album::findOrFail($id));
     }
 
-    public function userAlbumbooks($id){
-        
+    public function userAlbumbooks($id)
+    {
         $albums = $this->getBookedAlbumsForUser($id); // trait method
 
         return new AlbumCollection($albums);
     }
-    public function userMoviebooks($id){
+    public function userMoviebooks($id)
+    {
         $movies = $this->getBookedMoviesForUser($id); //trait mehtod
 
         return new MovieCollection($movies);
     }
 
-    public function allBookings(){
+    public function allBookings()
+    {
         $products = $this->getBookedAlbumsView();
         $movies = $this->getBookedMoviesView();
         $products->merge($movies);

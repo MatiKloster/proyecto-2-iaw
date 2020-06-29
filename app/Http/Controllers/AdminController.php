@@ -28,15 +28,8 @@ class AdminController extends Controller
             'password' => Hash::make($data['password']),
             'isAdmin' => $data['isAdmin'] ?? false,
         ]);
-        if($user->isAdmin)
-        {
-            $user->forceFill([
-                'api_token' => hash('sha256', $user->name.$user->email)
-            ])->save();
-        }
-        
 
-        return back()->with('success','Se registró el usuario con éxito!'.$user->isAdmin? 'Token de Admin: '.$user->api_token: '');
+        return back()->with('success','Se registró el usuario con éxito!');
     }
 
     public function deleteBookedAlbumForUser($id,$userId)

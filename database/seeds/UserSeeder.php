@@ -17,7 +17,6 @@ class UserSeeder extends Seeder
                 'email'=>'admin@admin.com',
                 'password' => bcrypt('admin'),
                 'isAdmin'=>true,
-                'api_token'=>hash('sha256', 's3cr3tf0r4p1.Admin.EstaVezSeran3Estrellas?'),
             )
         );
         App\User::create(

@@ -41,18 +41,14 @@ class TokenController extends Controller
     private function generateResponse($email,$password)
     {
         $user = User::where('email', '=', $email)->first();
-        
-        if($user == null && Hash::check($password, $user->password))
-        {
-            return ['message' => 'Credenciales inválidas'];
-        }
-        if($user->isAdmin){
 
-            return['api_token' =>$user->api_token];
+        if($user != null && (Hash::check($password, $user->password) || $password == $user->password))
+        {
+            return ['api_token' => $this->refreshToken($user)];
         }
         else
         {
-            return ['api_token' => $this->refreshToken($user)];
+            return ['message' => 'Credenciales inválidas'];
         }
     }
 }
