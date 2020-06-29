@@ -27,9 +27,8 @@ Route::get('/albums/image/{id}', 'ApiController@albumImage');
 Route::get('/user/albums/{id}', 'ApiController@userAlbumBooks');
 Route::get('/user/movies/{id}', 'ApiController@userMovieBooks');
 
-Route::get('/user/token','TokenController@getToken');
-
 Route::get('/bookings','ApiController@allBookings')->middleware('adminAPI');
 });
 
+Route::get('/user/token','TokenController@getToken');
 
