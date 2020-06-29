@@ -21,7 +21,7 @@ Route::get('/movies', 'ApiController@movies');
 Route::get('/movies/{id}', 'ApiController@movie');
 Route::get('/movies/image/{id}', 'ApiController@movieImage');
 
-Route::get('/albums', 'ApiController@albums')->middleware('auth:api');
+Route::get('/albums', 'ApiController@albums');
 Route::get('/albums/{id}', 'ApiController@album');
 Route::get('/albums/image/{id}', 'ApiController@albumImage');
 

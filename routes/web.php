@@ -43,16 +43,16 @@ Route::get('/User/Book/Album/{albumId}','BookController@bookAlbum')->name('bookA
 Route::get('/User/Book/Movie/{movieId}','BookController@bookMovie')->name('bookMovie');
 Route::get('/Book','BookController@index')->name('bookIndex')->middleware('admin');
 
-Route::get('/User/books','BookController@showBooksForUser')->name('userBooks')->withoutMiddleware('admin');
-Route::delete('/User/books/Album/delete/{id}','BookController@deleteBookedAlbum')->name('albumBookedDeleteForUser')->withoutMiddleware('admin');
-Route::delete('/User/books/Movie/delete/{id}','BookController@deleteBookedMovie')->name('movieBookedDeleteForUser')->withoutMiddleware('admin');
+Route::get('/User/books','BookController@showBooksForUser')->name('userBooks');
+Route::delete('/User/books/Album/delete/{id}','BookController@deleteBookedAlbum')->name('albumBookedDeleteForUser');
+Route::delete('/User/books/Movie/delete/{id}','BookController@deleteBookedMovie')->name('movieBookedDeleteForUser');
 
 Route::get('/Admin/register','AdminController@create')->name('adminCreation');
 Route::post('/Admin/store','AdminController@store')->name('adminStore');
-Route::get('/Admin/books/search/user','BookController@searchBooksForUser')->name('bookSearchUser');
-Route::get('/Admin/books/search/product','BookController@searchBookedProduct')->name('bookSearchProduct');
+Route::get('/Admin/books/search/user','BookController@searchBooksForUser')->name('bookSearchUser')->middleware('admin');
+Route::get('/Admin/books/search/product','BookController@searchBookedProduct')->name('bookSearchProduct')->middleware('admin');
 Route::delete('/Admin/books/delete/Movie/{id}/User/{userId}','AdminController@deleteBookedMovieForUser')->name('adminBookedMovieDelete');
 Route::delete('/Admin/books/delete/Album/{id}/User/{userId}','AdminController@deleteBookedAlbumForUser')->name('adminBookedAlbumDelete');
 Route::get('/', 'HomeController@index')->name('home');
 
-Route::get('/Token','TokenController@show')->name('token');
+Route::get('/Token','TokenController@show')->name('token')->middleware('login');
