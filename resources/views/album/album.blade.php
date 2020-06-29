@@ -32,6 +32,7 @@
                      para mas información acerca del disco.</small></p>
             </div>
             <div class="col-3">
+                @if (Auth::user()->isAdmin)
                 <div class="row justify-content-center mt-2">
                     <form action="{{route('albumDelete',$album)}}" method="POST">
                         @method('DELETE')
@@ -41,7 +42,8 @@
                 </div>
                 <div class="row justify-content-center mt-3">
                     <a type="button" class="btn btn-lg textButton" href="{{route('albumEdit',$album)}}">Editar</a>
-                </div>
+                </div>    
+                @endif
                 <div class="row justify-content-center mt-4">
                     <a type="button" class="btn btn-lg textButton" href="{{route('bookAlbum',$album)}}">Reservar</a>
                 </div>

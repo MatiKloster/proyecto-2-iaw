@@ -32,6 +32,7 @@
                          para mas información acerca de la pelicula.</small></p>
             </div>
             <div class="col-3">
+                @if (Auth::user()->isAdmin)
                 <div class="row justify-content-center mt-2">
                     <form action="{{route('movieDelete',$movie)}}" method="POST">
                         @method('DELETE')
@@ -42,6 +43,7 @@
                 <div class="row justify-content-center mt-3">
                     <a type="button" class="btn btn-lg textButton" href="{{route('movieEdit',$movie)}}">Editar</a>
                 </div>
+                @endif
                 <div class="row justify-content-center mt-4">
                     <a type="button" class="btn btn-lg textButton" href="{{route('bookMovie',$movie)}}">Reservar</a>
                 </div>
