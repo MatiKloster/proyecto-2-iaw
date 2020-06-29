@@ -21,10 +21,10 @@
 </div>
 <div class="container mt-5">
     <div class="row justify-content-center">
-        <div class="card-wrapper">
+        <div class="card-wrapper ml-4 pl-4">
             <div class="card-deck">
                 @foreach ($movies as $movie)
-                <div class="col-4-lg">
+                <div class="col-4-lg pl-4">
                     <div class="card mb-4" style="min-width: 18rem; max-width: 18rem;" >
                         <img src="data:image/jpg;base64, {{$movie->cover}}" class="card-img-top" alt="...">
                         <div class="card-body">
