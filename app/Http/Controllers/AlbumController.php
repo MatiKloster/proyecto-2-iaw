@@ -85,7 +85,7 @@ class AlbumController extends Controller
     {
         $name=$_GET['search'];
         if($name!=""){
-            $albums=Album::where('name','like','%'.$name.'%')->paginate(self::paginateNumber);
+            $albums=Album::where('name','like','%'.$name.'%')->paginate(0);
             return view('album.index',compact('albums'));
         }
         else{

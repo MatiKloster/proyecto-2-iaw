@@ -155,7 +155,7 @@ class MovieController extends Controller
     public function search(){
         $name=$_GET['search'];
         if($name!=""){
-            $movies=Movie::where('name','like','%'.$name.'%')->paginate(self::paginateNumber);
+            $movies=Movie::where('name','like','%'.$name.'%')->paginate(0);
             return view('movie.index',compact('movies'));
         }
         else{
