@@ -1,6 +1,6 @@
 <div class="form-group">
     <label>Nombre</label>
-    <input type="text" name="name" class="form-control" placeholder="e.g Load" value="@if (isset($album->name)){{old('name')}}@else {{old('name',NULL)}}@endif">
+    <input type="text" name="name" class="form-control" placeholder="e.g Load" value="@if (isset($album->name)){{old('name',$album->name)}}@else {{old('name',NULL)}}@endif">
 </div>
 <div class="form-group">
     <label>Artista </label>
