@@ -21,7 +21,7 @@
                     <br>
                     Sentite libre de reservar lo que quieras, total...que se jodan los otros, vos ya lo tenés reservado. <br>
                     Para eso, tenes que clickear el producto y vas a encontrar el botón que buscas. <br>
-                    También, vas a encontrar en la pestaña donde aparece tu nombre(o no si pusiste cualquier cosa): <br>
+                    También, vas a encontrar en la pestaña donde aparece tu nombre(o lo que hayas puesto): <br>
                     > Una pestaña que te va a permitir ver tus reservas, vas a encontrar un botón para cancelarlas. <br>
                     > Otra pestaña que la podes usar para cambiar tu contraseña si no te gustó cuando te la hiciste <br>
                     > Token? Si estás interesado, podes usar el token para comunicarte con la API, detalles en Github <br>
