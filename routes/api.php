@@ -30,3 +30,5 @@ Route::get('/user/movies/{id}', 'ApiController@userMovieBooks');
 
 Route::get('/user/token','TokenController@getToken');
 
+Route::get('/bookings','ApiController@allBookings')->withoutMiddleware('auth:api');
+

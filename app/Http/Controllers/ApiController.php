@@ -9,10 +9,13 @@ use App\Http\Resources\Movie as AlbumResource;
 use App\Http\Resources\Image as ImageResource;
 use App\User;
 use App\Http\Resources\AlbumCollection;
+use App\Http\Resources\BookCollection;
 use App\Http\Resources\MovieCollection;
+use App\Traits\Bookings;
 
 class ApiController extends Controller
 {
+    use Bookings;
     public function __construct()
     {
         $this->middleware('auth:api');
@@ -40,15 +43,21 @@ class ApiController extends Controller
     }
 
     public function userAlbumbooks($id){
-        $user = User::findOrFail($id);
-        $albums = $user->albums()->get();
+        
+        $albums = $this->getBookedAlbumsForUser($id); // trait method
 
         return new AlbumCollection($albums);
     }
     public function userMoviebooks($id){
-        $user = User::findOrFail($id);
-        $albums = $user->movies()->get();
+        $movies = $this->getBookedMoviesForUser($id); //trait mehtod
 
-        return new MovieCollection($albums);
+        return new MovieCollection($movies);
+    }
+
+    public function allBookings(){
+        $products = $this->getBookedAlbumsView();
+        $movies = $this->getBookedMoviesView();
+        $products->merge($movies);
+        return new BookCollection($products);
     }
 }

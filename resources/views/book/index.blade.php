@@ -41,7 +41,7 @@
     @foreach ($albums as $album)
     <tr>
         <td>{{$album->userName}}</td>
-        <td>{{$album->albumName}}</td>
+        <td>{{$album->name}}</td>
         <td>{{$album->createdAt}}</td>
         <td>
           <form action="{{route('adminBookedAlbumDelete',['id' => $album->id,'userId' => $album->userId])}}" method="POST">
@@ -55,7 +55,7 @@
     @foreach ($movies as $movie)
     <tr>
         <td>{{$movie->userName}}</td>
-        <td>{{$movie->movieName}}</td>
+        <td>{{$movie->name}}</td>
         <td>{{$movie->createdAt}}</td>
         <td>
           <form action="{{route('adminBookedMovieDelete',['id' => $movie->id,'userId' => $movie->userId])}}" method="POST">
