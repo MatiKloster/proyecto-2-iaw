@@ -88,6 +88,6 @@ class ApiController extends Controller
 
         $user = $this->getUserFromToken($token);
         
-        return ($user->id ==  $id)? true :false;
+        return ($user->id ==  $id || $user->isAdmin)? true :false;
     }
 }
