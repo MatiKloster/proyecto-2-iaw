@@ -1,0 +1,78 @@
+//\
+$colorLogo:rgb(255,80,0);
+$pag-item-bg: #5568;
+$pag-item-border: #007bff;
+$nav-bar:#343a40;
+
+@import url(//fonts.googleapis.com/css?family=Carter+One);
+.dropdown-toggle::after { 
+    content: none; 
+}
+html{
+    height: 100%;
+  box-sizing: border-box;
+}
+body{
+    background: url('img/bg.png')no-repeat 50% 0 fixed; 
+    background-size: cover;
+    position: relative;
+  margin: 0;
+  padding-bottom: 6rem;
+  min-height: 100%;
+} 
+.footer {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    padding: 1rem;
+    background-color: #efefef;
+    text-align: center;
+  }
+.card-img-top {
+    width: 100%;
+    height: 15vw;
+    object-fit: cover;
+}
+
+.logo{
+    color: $colorLogo;
+    font-family: 'Carter One';
+}
+.card:hover{
+    -webkit-box-shadow: -1px 9px 40px -12px rgba(0,0,0,0.75);
+    -moz-box-shadow: -1px 9px 40px -12px rgba(0,0,0,0.75);
+    box-shadow: -1px 9px 40px -12px rgba(0, 0, 0, 0.75);
+}
+
+.btn.btn-lg{
+    background-color:$colorLogo;
+    border-color: $colorLogo;
+    color: black;
+}
+
+.pagination > li > a,
+.pagination > li > span {
+    color: $colorLogo; // use your own color here
+}
+
+.pagination > .active > a,
+.pagination > .active > a:focus,
+.pagination > .active > a:hover,
+.pagination > .active > span,
+.pagination > .active > span:focus,
+.pagination > .active > span:hover {
+    background-color: $nav-bar;
+    border-color:$nav-bar;
+}
+
+.page-item.active .page-link {
+    z-index: 3;
+    color: $colorLogo !important;
+    background-color: $nav-bar !important;
+    border-color: $nav-bar !important;
+}
+
+.textButton{
+      font-family: 'Carter One' !important;  
+}

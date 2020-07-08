@@ -2,7 +2,6 @@
 
 namespace App;
 
-use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
@@ -16,7 +15,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password','isAdmin','api_token'
     ];
 
     /**
@@ -36,4 +35,20 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function movies(){
+
+        return $this->belongsToMany(Movie::class)->withTimestamps();
+    
+    }
+    public function albums(){
+        return $this->belongsToMany(Album::class)->withTimestamps();
+    }
+    public function delete()
+    {
+        $this->movies()->detach();
+        $this->album()->detach();
+
+        return parent::delete();
+    }
 }
