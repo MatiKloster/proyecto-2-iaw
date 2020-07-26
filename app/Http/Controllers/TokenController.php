@@ -15,9 +15,14 @@ class TokenController extends Controller
         $email = $request->header('email');
         $password = $request->header('password');
         
-        $response =  response($this->generateResponse($email,$password));
+        $response =  $this->generateResponse($email,$password);
         
-        return $response;
+        if(array_key_exists('error', $response))
+        {
+            return response( $response, 401);
+        }
+
+        return response($response,200);
     }
     private function refreshToken($user)
     {
@@ -48,7 +53,7 @@ class TokenController extends Controller
         }
         else
         {
-            return ['message' => 'Credenciales inválidas'];
+            return ['error' => 'Unauthenticated.'];
         }
     }
 }
