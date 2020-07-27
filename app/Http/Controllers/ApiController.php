@@ -23,7 +23,9 @@ class ApiController extends Controller
     }
     public function movies()
     {
-        return new MovieCollection(Movie::all()->sortBy('id'));
+        $response = new MovieCollection(Movie::all()->sortBy('id'));
+        
+        return response()->json($response)->setEncodingOptions(JSON_NUMERIC_CHECK);
     }
     public function movie($id)
     {
@@ -36,7 +38,8 @@ class ApiController extends Controller
     
     public function albums()
     {
-        return new AlbumCollection(Album::all()->sortBy('id'));
+        $response = new AlbumCollection(Album::all()->sortBy('id'));
+        return response()->json($response)->setEncodingOptions(JSON_NUMERIC_CHECK);
     }
     
     public function album($id)
