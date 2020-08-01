@@ -22,6 +22,7 @@ class Album extends JsonResource
             'genre' => $this->genre,
             'quantity' => $this->quantity,
             'price' => $this->price,
+            'imageUri' => "https://proyecto-2-mkloster.herokuapp.com/api/albums/image/".$this->id,
         ];
     }
 }
