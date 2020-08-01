@@ -23,6 +23,7 @@ class Movie extends JsonResource
             'quantity' => $this->quantity,
             'price' => $this->price,
             'imageUri' => "https://proyecto-2-mkloster.herokuapp.com/api/movies/image/".$this->id,
+            'resource' => "https://proyecto-2-mkloster.herokuapp.com/api/movies/".$this->id,
         ];
     }
 }
