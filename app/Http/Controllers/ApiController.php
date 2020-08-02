@@ -6,7 +6,7 @@ use App\Movie;
 use App\User;
 use App\Http\Resources\Movie as MovieResource;
 use App\Album;
-use App\Http\Resources\Movie as AlbumResource;
+use App\Http\Resources\Album as AlbumResource;
 use App\Http\Resources\Image as ImageResource;
 use App\Http\Resources\AlbumCollection;
 use App\Http\Resources\BookCollection;
